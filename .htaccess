@@ -1,0 +1,14 @@
+
+# BEGIN WordPress
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ajax/(.+) $1
+
+    RewriteCond %{HTTP_HOST} !=localhost
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{HTTP_HOST} !=localhost
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule .!ajax. /teste/carga/index.php [L]
+    </IfModule>
+# END WordPress
