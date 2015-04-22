@@ -20,6 +20,7 @@
 		<div class="col-main-left">
                     <h1 class="page-title">Cursos</h1>
                 </div>
+            <!--
 		<aside class="right-sidebar">
 			<div class="block widget-searchwidget">
 				<input type="text" value="" placeholder="Procurar..."/>
@@ -97,10 +98,12 @@
         </tr>
         </tbody>
     </table>
-</div><!--Fim calendário-->
+</div>Fim calendário
 			</div>
 			
 		</aside>
+                -->
+                
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
               <?php

@@ -1181,3 +1181,27 @@
 [22-Apr-2015 15:53:50 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
 [22-Apr-2015 15:53:50 America/Sao_Paulo] PHP Stack trace:
 [22-Apr-2015 15:53:50 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 16:01:34 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 16:01:34 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 16:01:34 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:29:42 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:29:42 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:29:42 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:30:38 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:30:38 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:30:38 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:30:42 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:30:42 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:30:42 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:30:51 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:30:51 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:30:51 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:31:06 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:31:06 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:31:06 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:33:06 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:33:06 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:33:06 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
+[22-Apr-2015 18:36:41 America/Sao_Paulo] PHP Fatal error:  Class 'Tempo' not found in C:\wamp\www\atlsmg\index.php on line 82
+[22-Apr-2015 18:36:41 America/Sao_Paulo] PHP Stack trace:
+[22-Apr-2015 18:36:41 America/Sao_Paulo] PHP   1. {main}() C:\wamp\www\atlsmg\index.php:0
