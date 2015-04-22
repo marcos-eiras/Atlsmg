@@ -98,6 +98,14 @@ var SierraTecnologia = (function () {
         $('#conteudo').append(Visual_Turma_Listagem(Modelo_Turma(Curso)));
     }
     
+    function Controle_Noticias_Listagem(){ 
+        $('#conteudo').append(Visual_Noticias_Listagem(Modelo("Noticias")));
+    }
+    
+    function Controle_Noticia_Listagem(Noticia){ 
+        $('#conteudo').append(Visual_Noticia_Listagem(Modelo_Noticia(Noticia)));
+    }
+    
     /**
      * Funço Responsvel por fazer a conexao e retornar o json com o servidor
      */

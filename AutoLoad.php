@@ -64,6 +64,32 @@ function Visual_Imagem(&$foto,$altura = NULL,$largura = NULL, $ext='png'){
 
 
 function Modelo_Noticia($sqli){
+    if(!isset($_GET['id'])) Visual_Erro ('Noticia não selecionado');
+    
+    $noticia = (int) $_GET['id'];
+    $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
+    $query = ' FROM Noticia AS N ';
+    $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 AND N.id='.$noticia.' LIMIT 1'; // AND N.destaque=0
+
+    $query_result = $sqli->query($select.$query.$where);
+    if($query_result===false){
+        Visual_Erro($sqli->error);
+    }
+    $contador = 0;
+    $resultado = Array();
+    while ($campo = $query_result->fetch_object()) {
+        if($campo->foto!==''){
+            $campo->foto = Visual_Imagem($campo->foto,354,240,'jpg');
+        }
+        $resultado[] = $campo;
+        ++$contador;
+    }
+    
+    
+    return Array($resultado,$contador);
+}
+
+function Modelo_Noticias($sqli){
     $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
     $query = ' FROM Noticia AS N ';
     $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC'; // AND N.destaque=0
@@ -86,7 +112,7 @@ function Modelo_Noticia($sqli){
     return Array($resultado,$contador);
 }
 
-function Modelo_Turma($sqli,$artista=false){
+function Modelo_Turma($sqli){
     if(!isset($_GET['id'])) Visual_Erro ('Curso não selecionado');
     
     $curso = (int) $_GET['id'];
