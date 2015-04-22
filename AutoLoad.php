@@ -1,5 +1,6 @@
 <?php
 require_once 'lib/WideImage.php';
+require_once 'SiTec_Config.php';
 
 
 
@@ -14,24 +15,8 @@ require_once 'lib/WideImage.php';
 
 // Conexao com MYSQL
 
-$servidor_conexao = $_SERVER['SERVER_NAME'];
 
-if ($servidor_conexao == 'fenixdigital.no-ip.biz' || $servidor_conexao == 'localhost')
-{
-    $Conexao_Server                         = "localhost"; // Seu servidor do bando de dados
-    $Conexao_Usuario                        = "root";   // Nome de usuario do banco de dados
-    $Conexao_Senha                          = "";   // Senha do banco de dados
-    $Conexao_Banco                          = 'Cliente_Atls';
-}else if ($servidor_conexao == 'fenixdigital.net.br' || $servidor_conexao == 'www.fenixdigital.net.br'){
-    $Conexao_Server                         = "localhost"; // Seu servidor do bando de dados
-    $Conexao_Usuario                        = "fenixdig_atlsmg";   // Nome de usuario do banco de dados
-    $Conexao_Senha                          = "fenix@@";   // Senha do banco de dados
-    $Conexao_Banco                          = 'fenixdig_atlsmg';
-}else{
-    exit;
-}
-
-@$Conexao_Mysqli  =   new mysqli($Conexao_Server, $Conexao_Usuario, $Conexao_Senha, $Conexao_Banco);
+@$Conexao_Mysqli  =   new mysqli(SIS_SERVER, SIS_USUARIO, SIS_SENHA, SIS_BANCO);
 if (mysqli_connect_errno()) {
     throw new Exception('Erro de Conexão: '.mysqli_connect_error(),3100);
 }
@@ -77,86 +62,12 @@ function Visual_Imagem(&$foto,$altura = NULL,$largura = NULL, $ext='png'){
 
 
 
-function Modelo_Destaque($sqli,$artista=false){
-    $altura = (int) $_GET['altura'];
-    $query = '('.
-        // NOTICIAS
-        'SELECT N.id, N.nome, N.texto, N.foto, \'Noticia\' as Tipo  '.
-        'FROM Noticia AS N '.
-        'LEFT JOIN Noticia_Referencia AS NR '.
-        'ON N.id = NR.noticia '.
-        'LEFT JOIN Musica_Album_Artista AS MMA '.
-        'ON NR.tabelaid = MMA.id '.
-        'WHERE NR.tabela=\'Musica_Album_Artista\' AND N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 AND N.destaque=1'.
-    ') UNION ('.
-        // EVENTOS
-        'SELECT Event.id, Event.nome, Event.texto, Event.foto, \'Evento\' as Tipo  '.
-        'FROM Evento AS Event '.
-        'LEFT JOIN Evento_Artistas AS EventA '.
-        'ON Event.id = EventA.evento '.
-        'LEFT JOIN Musica_Album_Artista AS MMA '.
-        'ON EventA.artista = MMA.id '.
-        'WHERE Event.servidor=\'Fenix_Atls\' AND Event.deletado=0 AND Event.status=1 AND Event.destaque=1'.
-    ') UNION ('.
-        // VIDEOS
-        'SELECT MV.id, MV.nome, MV.obs as texto, MV.foto, \'Video\' as Tipo '.
-        'FROM Musica_Video AS MV '.
-        'LEFT JOIN Musica_Album_Artista AS MMA '.
-        'ON MV.artista = MMA.id '.
-        'WHERE MV.servidor=\'Fenix_Atls\' AND MV.deletado=0 AND MV.status=1 AND MV.destaque=1'.
-    ')';
-    $query_result = $sqli->query($query);
-    if($query_result===false){
-        Visual_Erro($sqli->error);
-    }
-    $contador = 0;
-    $resultado = Array();
-    while ($campo = $query_result->fetch_object()) {
-        $campo->foto = Visual_Imagem($campo->foto,$altura,4000,'jpg');
-        $resultado[] = $campo;
-        ++$contador;
-    }
-    shuffle($resultado);
-    return Array($resultado,$contador);
-}
-/**
- * 
- * @param type $sqli
- * @param type $artista (Quando False vai para todos os artistas, quando nao, se especifica em um
- * @return type
- */
-function Modelo_Artista($sqli,$artista=false){
-    if($artista===false){
-        $query ='SELECT MMA.id, MMA.nome, MMA.foto as fotos, MMA.origem, MMA.obs '.
-                'FROM Musica_Album_Artista AS MMA '.
-                'WHERE MMA.servidor=\'Fenix_Atls\' AND MMA.deletado=0 AND MMA.status=1';
-    }
-    $query_result = $sqli->query($query);
-    if($query_result===false){
-        Visual_Erro($sqli->error);
-    }
-    $contador = 0;
-    $resultado = Array();
-    while ($campo = $query_result->fetch_object()) {
-        $campo->fotos = Visual_Imagem($campo->fotos,319,1000,'png');
-        $resultado[] = $campo;
-        ++$contador;
-    }
-    return Array($resultado,$contador);
-}
-function Modelo_Noticia($sqli,$artista=false){
+
+function Modelo_Noticia($sqli){
     $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
     $query = ' FROM Noticia AS N ';
     $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC LIMIT 4'; // AND N.destaque=0
-    if($artista!==false){
-        $artista = (int) $artista;
-        $select .=', MMA.id as artista';
-        $query .= 'INNER JOIN Noticia_Referencia AS NR '.
-            'ON N.id = NR.noticia '.
-            'INNER JOIN Musica_Album_Artista AS MMA '.
-            'ON NR.tabelaid = MMA.id ';
-        $where .= ' AND NR.tabela=\'Musica_Album_Artista\' AND MMA.id='.$artista;
-    }
+
     $query_result = $sqli->query($select.$query.$where);
     if($query_result===false){
         Visual_Erro($sqli->error);
@@ -172,46 +83,19 @@ function Modelo_Noticia($sqli,$artista=false){
     
     return Array($resultado,$contador);
 }
-function Modelo_Album($sqli,$artista=false){
-    $query ='SELECT MA.id, MA.nome, MA.compra, MA.foto, MA.lancamento, MA.obs, MMA.id as artista '.
-            'FROM Musica_Album AS MA '.
-            'LEFT JOIN Musica_Album_Artista AS MMA '.
-            'ON MA.artista = MMA.id '.
-            'WHERE MA.servidor=\'Fenix_Atls\' AND MA.deletado=0 AND MA.status=1';
-    if($artista!==false){
-        $artista = (int) $artista;
-        $query .= ' AND MMA.id='.$artista;
-    }
-    $query .= ' ORDER BY MA.lancamento DESC';
-    $query_result = $sqli->query($query);
-    if($query_result===false) Visual_Erro($sqli->error);
-    $contador = 0;
-    $resultado = Array();
-    while ($campo = $query_result->fetch_object()) {
-        $campo->foto = Visual_Imagem($campo->foto,100,100,'jpg');
-        $resultado[] = $campo;
-        ++$contador;
-    }
-    return Array($resultado,$contador);
-}
+
 function Modelo_Turma($sqli,$artista=false){
-    $query ='SELECT Event.id, Event.nome, Event.texto, Event.foto, Event.data_inicio, MMA.id as artista '.
-            'FROM Evento AS Event '.
-            'INNER JOIN Evento_Artistas AS EventA '.
-            'ON Event.id = EventA.evento '.
-            'INNER JOIN Musica_Album_Artista AS MMA '.
-            'ON EventA.artista = MMA.id '.
-            'WHERE Event.servidor=\'Fenix_Atls\' AND Event.deletado=0 AND Event.status=1 ORDER BY data_inicio DESC LIMIT 4';
-    if($artista!==false){
-        $artista = (int) $artista;
-        $query .= ' AND MMA.id='.$artista;
-    }
+    if(!isset($_GET['id'])) Visual_Erro ('Curso não selecionado');
+    
+    $curso = (int) $_GET['id'];
+    $query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim, CuT.carga, CuT.descricao '.
+            'FROM Curso_Turma AS CuT '.
+            'WHERE CuT.servidor=\'Fenix_Atls\' AND CuT.deletado=0 AND CuT.status=1 AND CuT.curso='.$curso.' ORDER BY inicio ASC';
     $query_result = $sqli->query($query);
     if($query_result===false) Visual_Erro($sqli->error);
     $contador = 0;
     $resultado = Array();
     while ($campo = $query_result->fetch_object()) {
-        $campo->foto = Visual_Imagem($campo->foto,200,200,'jpg');
         $resultado[] = $campo;
         ++$contador;
     }
@@ -286,6 +170,19 @@ if($Visual_TemaTipo==='Completo'){
     list($Visual_Cont_Eventos,$Visual_Cont_Eventos_i)   = Modelo_Evento($Conexao_Mysqli);
     list($Visual_Cont_Video,$Visual_Cont_Video_i)   = Modelo_Video($Conexao_Mysqli);
     // Chama Layoult*/
+    if(!isset($_GET['pg'])){
+        $pg = 'home';
+    }else{
+        $pg = anti_injection($_GET['pg']);
+    }
+    if(isset($_GET['id'])){
+        $paginaid = (int) $_GET['id'];
+    }else{
+        $paginaid = 0;
+    }
+    if(!file_exists('Visual'.DS.$pg.'.php')){
+        echo 'Pagina Não Existe'; exit;
+    }
     require_once $ROOT . 'Visual.php';
     /**/
 }else{
