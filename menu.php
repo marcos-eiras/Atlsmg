@@ -14,6 +14,7 @@
                     </li>
                    <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
                    <li <?php if(isset($active[5])) echo $active[5] ?>><a href="contato.php" title="contato">Contato</a></li>                 
+                   <li <?php if(isset($active[6])) echo $active[6] ?>><a href="index.php?pg=noticias" title="noticias">Notícias</a></li>
                   </ul>
                 </nav>
                 
@@ -36,6 +37,7 @@
                     </li>
                     <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
                    <li <?php if(isset($active[5])) echo $active[5] ?>><a href="contato.php" title="contato">Contato</a></li>
+                   <li <?php if(isset($active[6])) echo $active[6] ?>><a href="index.php?pg=noticias" title="noticias">Notícias</a></li>
                       <span class="clearfix"></span>
                    </ul>
                   

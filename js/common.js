@@ -174,6 +174,37 @@ var SierraTecnologia = (function () {
 
         for(i=0; i < data.length; i++){
             
+            // Para não exibir null na descrição
+            if (data[i].descricao == null)
+            {
+              data[i].descricao = '';  
+            }
+            
+            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            <br></p><span style=\"color:#08c;\">Quantidade:</span> "+data[i].qnt+"<p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
+            <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
+            <span style=\"color:#08c;\">Descrição:</span> "+data[i].descricao+"</p></div>";      
+        }
+        
+        console.log('Chamou');
+        
+        
+        
+        if(i==0){
+            html = html + "Não tem conteúdo";
+        }
+        
+        return html;
+    }
+    
+    function Visual_Noticia_Listagem(data){
+        var html = "";
+        var i;
+
+        if(data===false) return '';
+
+        for(i=0; i < data.length; i++){
+            
              html = html+
                 ""+
                 data[i].id+
@@ -192,6 +223,30 @@ var SierraTecnologia = (function () {
                 ""+
                 data[i].descricao+
                 "<br><br>";
+        }
+        
+        console.log('Chamou');
+        
+        
+        
+        if(i==0){
+            html = html + "No tem conteudo";
+        }
+        
+        return html;
+    }
+    
+    function Visual_Noticias_Listagem(data){
+        var html = "";
+        var i;
+
+        if(data===false) return '';
+
+        for(i=0; i < data.length; i++){
+
+            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            <br></p><span style=\"color:#08c;\">Texto:</span> "+data[i].texto+"<p><span style=\"color:#08c;\">Data:</span> "+data[i].data+"</div>"; 
+            
         }
         
         console.log('Chamou');
