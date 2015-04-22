@@ -82,6 +82,10 @@ var SierraTecnologia = (function () {
             Controle_Home_Cursos();
         }else if(Pag==='turma'){
             Controle_Turma_Listagem(window.paginaid);
+        }else if(Pag==='noticia'){
+            Controle_Noticia_Listagem(window.paginaid);
+        }else if(Pag==='noticias'){
+            Controle_Noticias_Listagem(window.paginaid);
         }
         Controle_Menu_Cursos();
     }
