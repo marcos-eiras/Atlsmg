@@ -9,7 +9,7 @@
                     <li <?php if(isset($active[3])) echo $active[3] ?> class="parent"><a href="#" title="curso">Curso</a>
                       <ul style="width: 100px; display: none;">
                        <!--<li class="parent"><a href="categoria.php">Cardiologia</a></li>-->
-                        <li class="li" id="cursos"></li>
+                        <li class="li menucursos"></li>
                       </ul>
                     </li>
                    <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
@@ -31,7 +31,7 @@
                      <li <?php if(isset($active[7])) echo $active[7] ?>><a href="fotos.php" title="Médico">Fotos</a></li>
                     <li <?php if(isset($active[3])) echo $active[3] ?>><a href="#" title="curso">Curso</a>
                       <ul>
-                        <li class="parent"><a href="categoria.php">Cardiologia</a></li>
+                        <li class="li menucursos"></li>
                       </ul>
                     </li>
                     <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
