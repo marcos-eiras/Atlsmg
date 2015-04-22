@@ -73,7 +73,11 @@ var SierraTecnologia = (function () {
     "use strict";
     // VARIAVEIS PRIMARIAS
     var Pag = window.paginatual;
-    function Controle(){
+    
+    /**
+     * Funço Main(), Executada Automaticamente quando a pagina  carregada
+     */
+    function Main(){
         if(Pag==='home'){
             Controle_Home_Cursos();
         }else if(Pag==='turma'){
@@ -91,11 +95,12 @@ var SierraTecnologia = (function () {
     }    
     
     function Controle_Turma_Listagem(Curso){ 
-        $('#conteudo').append(Visual_Turma_Listagem(Modelo('Turma&id='+Curso)));
+        $('#conteudo').append(Visual_Turma_Listagem(Modelo_Turma(Curso)));
     }
     
-    
-    
+    /**
+     * Funço Responsvel por fazer a conexao e retornar o json com o servidor
+     */
     function Modelo(tipo){
         var resultado = false;
         $.ajax({
@@ -113,16 +118,24 @@ var SierraTecnologia = (function () {
         });//termina o ajax
         return resultado;
     }
+    /**
+     * 
+     * @param {int} Curso ->  o Curso correspondente as turmas
+     * @returns {undefined}
+     */
+    function Modelo_Turma(Curso){
+        return Modelo('Turma&id='+Curso);
+    }
 
     function Visual_Menu_Cursos(data){
         var html = "";
         var i;
-        
+
         if(data===false) return '';
 
         for(i=0; i < data.length; i++){
             
-             html = html+"<li class=parent><a href=Lista_Turmas_Curso.php?id_curso="+data[i].id+">"+data[i].nome+"</a></li><br><br>";
+             html = html+"<li class=parent><a href=\"index.php?pg=turma&id="+data[i].id+"\">"+data[i].nome+"</a></li><br><br>";
         }
         
         return html;
@@ -144,12 +157,14 @@ var SierraTecnologia = (function () {
     function Visual_Turma_Listagem(data){
         var html = "";
         var i;
-        
+
         if(data===false) return '';
 
         for(i=0; i < data.length; i++){
             
              html = html+
+                ""+
+                data[i].id+
                 ""+
                 data[i].id+
                 ""+
@@ -168,6 +183,13 @@ var SierraTecnologia = (function () {
         }
         
         console.log('Chamou');
+        
+        
+        
+        if(i==0){
+            html = html + "No tem conteudo";
+        }
+        
         return html;
     }
     
@@ -230,9 +252,9 @@ var SierraTecnologia = (function () {
         return valor;
     }
     
-    Controle();
+    Main();
         
     return {
-        Controle: Controle,
+        Main: Main,
     }
 }());

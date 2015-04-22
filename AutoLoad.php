@@ -66,7 +66,7 @@ function Visual_Imagem(&$foto,$altura = NULL,$largura = NULL, $ext='png'){
 function Modelo_Noticia($sqli){
     $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
     $query = ' FROM Noticia AS N ';
-    $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC LIMIT 4'; // AND N.destaque=0
+    $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC'; // AND N.destaque=0
 
     $query_result = $sqli->query($select.$query.$where);
     if($query_result===false){
@@ -75,7 +75,9 @@ function Modelo_Noticia($sqli){
     $contador = 0;
     $resultado = Array();
     while ($campo = $query_result->fetch_object()) {
-        $campo->foto = Visual_Imagem($campo->foto,354,240,'jpg');
+        if($campo->foto!==''){
+            $campo->foto = Visual_Imagem($campo->foto,354,240,'jpg');
+        }
         $resultado[] = $campo;
         ++$contador;
     }
@@ -163,12 +165,6 @@ var_dump(Modelo_Evento($Conexao_Mysqli));
 /**/
 if($Visual_TemaTipo==='Completo'){
     
-    /*list($Visual_Cont_Destaque,$Visual_Cont_Destaque_i) = Modelo_Destaque($Conexao_Mysqli);
-    list($Visual_Cont_Noticia,$Visual_Cont_Noticia_i) = Modelo_Noticia($Conexao_Mysqli);
-    list($Visual_Cont_Artistas,$Visual_Cont_Artistas_i) = Modelo_Artista($Conexao_Mysqli);
-    list($Visual_Cont_Album,$Visual_Cont_Album_i) = Modelo_Album($Conexao_Mysqli);
-    list($Visual_Cont_Eventos,$Visual_Cont_Eventos_i)   = Modelo_Evento($Conexao_Mysqli);
-    list($Visual_Cont_Video,$Visual_Cont_Video_i)   = Modelo_Video($Conexao_Mysqli);
     // Chama Layoult*/
     if(!isset($_GET['pg'])){
         $pg = 'home';
