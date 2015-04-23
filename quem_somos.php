@@ -23,14 +23,14 @@
                     <div class="cart-block">
 					<ul>
 						<li>(2)</li>
-						<li><a href="cart.html" title="Cart"><img title="Item" alt="Item" src="images/item_icon.png" /></a></li>
+						<li><a href="cart.html" title="Cart"><img title="Item" alt="Item" src="img/item_icon.png" /></a></li>
 						<li>Item</li>
 					</ul>
 					<div id="minicart" class="remain_cart" style="display: none;">
 						 <p class="empty">You have 2 items in your shopping cart.</p>
 						 <ol>
 						 	<li>
-								<div class="img-block"><img src="images/small_img.png" title="" alt="" /></div>
+								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
 								<div class="detail-block">
 									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
 									<p>
@@ -39,12 +39,12 @@
 									<a href="#" title="Details">Details</a>
 								</div>
 								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="images/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
+									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
+									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
 								</div>
 							</li>
 							<li>
-								<div class="img-block"><img src="images/small_img.png" title="" alt="" /></div>
+								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
 								<div class="detail-block">
 									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
 									<p>
@@ -53,8 +53,8 @@
 									<a href="#" title="Details">Details</a>
 								</div>
 								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="images/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
+									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
+									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
 								</div>
 							</li>
 							<li>
@@ -72,7 +72,7 @@
                   </section>
                 </div>
                 <h1 class="logo"><a href="index.php" title="Logo">
-                  <img title="Logo" alt="Logo" src="images/logo.png" />
+                  <img title="Logo" alt="Logo" src="img/logo.png" />
                   </a></h1>
                <?php $current = 6; include("menu.php"); ?>
             </div>
@@ -84,11 +84,10 @@
 	<div class="content-container container">
 		<div class="col-main-left">
 			<h1 class="page-title">Quem somos</h1>
-			<div class="about-banner"><img src="images/640.jpg" title="Image" alt="Image" /><div class="clear"></div></div>
+			<div class="about-banner"><img src="img/640.jpg" title="Image" alt="Image" /><div class="clear"></div></div>
 			<div class="block-01">
 				<center><h5>O  PROGRAMA  ATLS</h5></center>
                 <center><h4>SERVIÇO DE CIRURGIA GERAL E DO TRAUMA</h4></center>
-                <center><h4>Hospital João XXIII</h4></center>
 				<p>Nos últimos 40 anos, o Colégio Americano de Cirurgiões e o seu Comitê de Trauma trabalharam no intuito de estabelecer linhas normativas de conduta para o atendimento ao paciente traumatizado.</p><br/>
                 <p>Nesse sentido, o Comitê  de Trauma promoveu e divulgou continuamente o<em><strong> curso de suporte avançado de vida, Advanced Trauma Life Support (ATLS)</strong></em>, destinado a médicos.</p><br/>
                 <p>A essência do programa ATLS é a abordagem sistematizada e compacta dos cuidados iniciais às vítimas de traumatismos.
@@ -123,11 +122,11 @@ Este preparo do corpo docente ocorreu na primeira metade da década de noventa, 
 					<strong>Próximas datas</strong>
 					fique po dentro da data de começo do curso!
 				</p>
-				<div class="jaarkalender" style="background: url(images/backfade.png) no-repeat 0px 0px; text-align: center; margin-right: 12px; margin-bottom: 12px; float: left; width: 248px; height: 210px;">
+				<div class="jaarkalender" style="background: url(img/backfade.png) no-repeat 0px 0px; text-align: center; margin-right: 12px; margin-bottom: 12px; float: left; width: 248px; height: 210px;">
         <table border="0" class="calendar" cellpadding="2" cellspacing="0">
             <caption class="calendar-title" title="Calendario enero&nbsp;2015">
             <b><a href="http://www.calendario-365.es/calendario/2015/enero.html" style="border-bottom: dotted 1px #fff;
-                background: url(images/93.png) no-repeat scroll 0px 0px transparent;" class="calendar-title-link">Janeiro&nbsp;2015</a></b></caption>
+                background: url(img/93.png) no-repeat scroll 0px 0px transparent;" class="calendar-title-link">Janeiro&nbsp;2015</a></b></caption>
         <tbody>
         <tr>
             <th class="wknr" title="Número de semana">N.º</th>

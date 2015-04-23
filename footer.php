@@ -15,7 +15,7 @@
       <li class="link-title"><a href="#" title="TERMS & CONDITIONS">TERMOS E CONDIÇÕES</a></li>
 
       <li><a href="#" title="Termos e Conditições">Termos e Conditições</a></li><br/><br/><br/><br/><br/>
-      <div class="payment-block"><img src="images/payment.png" alt="payment"></div>
+      <div class="payment-block"><img src="img/payment.png" alt="payment"></div>
     </ul>
     <ul>
 
@@ -29,12 +29,12 @@
     <!--<ul class="stay-connected-blcok">
       <li>
            <ul class="social-links" style="margin-top: -67px;">
-      <li><a data-tooltip="Like us on facebook" href="#"><img alt="facebook" src="images/facebook.png"></a></li>
-      <li><a data-tooltip="Subscribe to RSS feed" href="#"><img alt="RSS" src="images/rss.png"></a></li>
-      <li><a data-tooltip="Follow us on twitter" href="#"><img alt="twitter" src="images/twitter.png"></a></li>
-      <li><a data-tooltip="Follow us on Dribbble" href="#"><img alt="dribbble" src="images/dribbble.png"></a></li>
-      <li><a data-tooltip="Follow us on Youtube" href="#"><img alt="youtube" src="images/youtube.png"></a></li>
-      <li><a data-tooltip="Follow us on skype" href="#"><img alt="skype" src="images/skype.png"></a></li>
+      <li><a data-tooltip="Like us on facebook" href="#"><img alt="facebook" src="img/facebook.png"></a></li>
+      <li><a data-tooltip="Subscribe to RSS feed" href="#"><img alt="RSS" src="img/rss.png"></a></li>
+      <li><a data-tooltip="Follow us on twitter" href="#"><img alt="twitter" src="img/twitter.png"></a></li>
+      <li><a data-tooltip="Follow us on Dribbble" href="#"><img alt="dribbble" src="img/dribbble.png"></a></li>
+      <li><a data-tooltip="Follow us on Youtube" href="#"><img alt="youtube" src="img/youtube.png"></a></li>
+      <li><a data-tooltip="Follow us on skype" href="#"><img alt="skype" src="img/skype.png"></a></li>
     </ul>-->
   </div>
   <div class="footer-bottom-block">

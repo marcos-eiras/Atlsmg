@@ -1,7 +1,7 @@
 <div class="new-product-block">
 				<ul class="product-grid">
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/curso1.jpg" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/curso1.jpg" /></div>
 						<div class="pro-content"><p>Curso de Cardiologia<br>Período: 01/03 a 02/04
                         
                         </p></div>
@@ -14,7 +14,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/curso1.jpg" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/curso1.jpg" /></div>
 						<div class="pro-content"><p>Curso de Cardiologia<br>
 						Período: 02/04 a 01/05
                         
@@ -28,7 +28,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/curso1.jpg" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/curso1.jpg" /></div>
 						<div class="pro-content"><p>Curso de Cardiologia<br>
 						Período: 02/05 a 03/06
                         
@@ -44,7 +44,7 @@
 				</ul>
 				<!--<ul class="product-grid">
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">
@@ -57,7 +57,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">
@@ -70,7 +70,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">
@@ -85,7 +85,7 @@
 				</ul>-->
 				<!--<ul class="product-grid">
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">
@@ -98,7 +98,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">
@@ -111,7 +111,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="images/default_img.png" /></div>
+						<div class="pro-img"><img title="Freature Product" alt="Freature Product" src="img/default_img.png" /></div>
 						<div class="pro-content"><p>White Round Neck T-Shirt</p></div>
 						<div class="pro-price">$600.00</div>
 						<div class="pro-btn-block">

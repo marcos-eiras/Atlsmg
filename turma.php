@@ -332,7 +332,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                   </section>
                 </div>
                 <h1 class="logo"><a href="index.php" title="Logo">
-                  <img title="Logo" alt="Logo" src="images/logo.png" />
+                  <img title="Logo" alt="Logo" src="img/logo.png" />
                   </a></h1>
               <?php $current = 2; include("menu.php"); ?>
             
@@ -650,11 +650,11 @@ jQuery (function(){
 			<h2>Sunglass RB3184</h2>
 			<div class="product-img-box">
 				<p class="product-image">
-					<img src="images/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
-					<a href="view.html" title="Image"><img src="images/quick_view_img.png" title="Image" alt="Image" /></a></p>
+					<img src="img/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
+					<a href="view.html" title="Image"><img src="img/quick_view_img.png" title="Image" alt="Image" /></a></p>
 				<ul class="thum-img">
-					<li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
-					<li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
+					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
+					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
 				</ul>
 			</div>
 		</div>
@@ -685,9 +685,9 @@ jQuery (function(){
 			<div class="add-to-cart-box">
 				<span class="qty-box">
 					<label for="qty">Qtd:</label>
-					<a class="prev" title="" href="#"><img alt="" title="" src="images/qty_prev.png"></a>
+					<a class="prev" title="" href="#"><img alt="" title="" src="img/qty_prev.png"></a>
 					<input type="text" name="qty" class="input-text qty" id="qty" maxlength="12" value="1">
-					<a class="next" title="" href="#"><img alt="" title="" src="images/qty_next.png"></a>				</span>
+					<a class="next" title="" href="#"><img alt="" title="" src="img/qty_next.png"></a>				</span>
 				<button title="Adicionar ao Carrinho" class="form-button"><span>Adicionar ao Carrinho</span></button>
 			</div>
             </div>

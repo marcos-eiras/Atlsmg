@@ -2,7 +2,7 @@
 	font-weight:bold;
 	font-size: 20px;
 	color: #fff;
-	background:url(images/vandaag-month.png) no-repeat 7px 0px;
+	background:url(img/vandaag-month.png) no-repeat 7px 0px;
 }
 .calendar-title {
 	color: #ffffff;
@@ -15,7 +15,7 @@
 	color: #ffffff;
 	text-decoration: none;
     border-bottom: dotted 1px #fff;
-	background: url(images/93.png) no-repeat scroll 0px 0px transparent;
+	background: url(img/93.png) no-repeat scroll 0px 0px transparent;
 	padding-left: 20px;
 }
 
@@ -131,7 +131,7 @@ td.wd_5, td.wd_6 {
 
 .calendar td:hover {
 	font-weight:bold;
-	background:url(/images/selected.png) no-repeat 3px 0px;
+	background:url(/img/selected.png) no-repeat 3px 0px;
 	cursor: pointer;
 }
 
@@ -143,6 +143,6 @@ td.wd_5, td.wd_6 {
 .calendar-month td:hover, .sun_hover {
 	font-weight:bold;
 	font-size: 20px;
-	background:url(/images/selected-month.png) no-repeat 7px 0px;
+	background:url(/img/selected-month.png) no-repeat 7px 0px;
 	cursor: pointer;
 }

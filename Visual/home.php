@@ -47,11 +47,11 @@
 					<strong>Próximas datas</strong>
 					fique po dentro da data de começo do curso!
 				</p>
-				<div class="jaarkalender" style="background: url(images/backfade.png) no-repeat 0px 0px; text-align: center; margin-right: 12px; margin-bottom: 12px; float: left; width: 248px; height: 210px;">
+				<div class="jaarkalender" style="background: url(img/backfade.png) no-repeat 0px 0px; text-align: center; margin-right: 12px; margin-bottom: 12px; float: left; width: 248px; height: 210px;">
         <table border="0" class="calendar" cellpadding="2" cellspacing="0">
             <caption class="calendar-title" title="Calendario enero&nbsp;2015">
             <b><a href="http://www.calendario-365.es/calendario/2015/enero.html" style="border-bottom: dotted 1px #fff;
-                background: url(images/93.png) no-repeat scroll 0px 0px transparent;" class="calendar-title-link">Janeiro&nbsp;2015</a></b></caption>
+                background: url(img/93.png) no-repeat scroll 0px 0px transparent;" class="calendar-title-link">Janeiro&nbsp;2015</a></b></caption>
         <tbody>
         <tr>
             <th class="wknr" title="Número de semana">N.º</th>

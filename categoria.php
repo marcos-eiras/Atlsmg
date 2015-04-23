@@ -28,14 +28,14 @@
                     <div class="cart-block">
 					<ul>
 						<li>(2)</li>
-						<li><a href="cart.html" title="Cart"><img title="Item" alt="Item" src="images/item_icon.png" /></a></li>
+						<li><a href="cart.html" title="Cart"><img title="Item" alt="Item" src="img/item_icon.png" /></a></li>
 						<li>Item</li>
 					</ul>
 					<div id="minicart" class="remain_cart" style="display: none;">
 						 <p class="empty">You have 2 items in your shopping cart.</p>
 						 <ol>
 						 	<li>
-								<div class="img-block"><img src="images/small_img.png" title="" alt="" /></div>
+								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
 								<div class="detail-block">
 									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
 									<p>
@@ -44,12 +44,12 @@
 									<a href="#" title="Details">Details</a>
 								</div>
 								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="images/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
+									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
+									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
 								</div>
 							</li>
 							<li>
-								<div class="img-block"><img src="images/small_img.png" title="" alt="" /></div>
+								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
 								<div class="detail-block">
 									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
 									<p>
@@ -58,8 +58,8 @@
 									<a href="#" title="Details">Details</a>
 								</div>
 								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="images/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
+									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
+									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
 								</div>
 							</li>
 							<li>
@@ -77,7 +77,7 @@
                   </section>
                 </div>
                 <h1 class="logo"><a href="index.php" title="Logo">
-                  <img title="Logo" alt="Logo" src="images/logo.png" />
+                  <img title="Logo" alt="Logo" src="img/logo.png" />
                   </a></h1>
               <?php $current = 3; include("menu.php"); ?>      
             </div>
@@ -132,11 +132,11 @@
 				</ul>
 			</div>-->
 			<div class="paypal-block">
-				<a href="#" title="Paypal"><img src="images/banner_pagseguro.gif" title="Paypal" alt="Paypal" /></a>
+				<a href="#" title="Paypal"><img src="img/banner_pagseguro.gif" title="Paypal" alt="Paypal" /></a>
 			</div>
 		</div>
 		<div class="col-main">
-			<div class="category-banner"><img src="images/education.jpg" title="Banner" alt="Banner" /></div>
+			<div class="category-banner"><img src="img/education.jpg" title="Banner" alt="Banner" /></div>
 			<div class="pager-container">
 				<!--<div class="pager">
 					<div class="show-items">6 Item(s)</div>
@@ -223,11 +223,11 @@ jQuery (function(){
 			<h2>Sunglass RB3184</h2>
 			<div class="product-img-box">
 				<p class="product-image">
-					<img src="images/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
-					<a href="view.html" title="Image"><img src="images/quick_view_img.png" title="Image" alt="Image" /></a>				</p>
+					<img src="img/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
+					<a href="view.html" title="Image"><img src="img/quick_view_img.png" title="Image" alt="Image" /></a>				</p>
 				<ul class="thum-img">
-					<li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
-					<li><img  src="images/quick_thum_img.png" title="" alt="" /></li>
+					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
+					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
 				</ul>
 			</div>
 		</div>
@@ -258,9 +258,9 @@ jQuery (function(){
 			<div class="add-to-cart-box">
 				<span class="qty-box">
 					<label for="qty">Qty:</label>
-					<a class="prev" title="" href="#"><img alt="" title="" src="images/qty_prev.png"></a>
+					<a class="prev" title="" href="#"><img alt="" title="" src="img/qty_prev.png"></a>
 					<input type="text" name="qty" class="input-text qty" id="qty" maxlength="12" value="1">
-					<a class="next" title="" href="#"><img alt="" title="" src="images/qty_next.png"></a>				</span>
+					<a class="next" title="" href="#"><img alt="" title="" src="img/qty_next.png"></a>				</span>
 				<button title="Add to Cart" class="form-button"><span>Add to Cart</span></button>
 			</div>
             </div>

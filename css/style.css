@@ -820,7 +820,7 @@ header {
 	position:relative;
 }
 .currencyBox {
-    background: url("../images/drop.png") no-repeat scroll right 14px #A0BDC5;
+    background: url("../img/drop.png") no-repeat scroll right 14px #A0BDC5;
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -889,7 +889,7 @@ header {
 }
 .header-wrapper header .search-block input[type='submit'] {
 	border:0px;
-	background: url("../images/search_icon.png") no-repeat center center;
+	background: url("../img/search_icon.png") no-repeat center center;
 	float: left;
 	overflow:visible;
 	padding:0;
@@ -996,10 +996,10 @@ header {
 	text-indent: -999em;
 }
 .flex-direction-nav li a.flex-prev {
-	background:#3a3a3a url("../images/banner_left_btn.png") no-repeat center center;
+	background:#3a3a3a url("../img/banner_left_btn.png") no-repeat center center;
 }
 .flex-direction-nav li a.flex-next {
-	background:#3a3a3a url("../images/banner_right_btn.png") no-repeat center center;
+	background:#3a3a3a url("../img/banner_right_btn.png") no-repeat center center;
 	margin-left:1px;
 }
 .flex-direction-nav li:hover a.flex-prev, .flex-direction-nav li:hover a.flex-next {
@@ -1174,7 +1174,7 @@ header {
 	text-align:center;
 }
 .quickllook {
-    background: url("../images/iconsPro.png") no-repeat scroll left top #A0BDC5;
+    background: url("../img/iconsPro.png") no-repeat scroll left top #A0BDC5;
     border: 0 none;
     color: #FFFFFF;
     display: inline-block !important;
@@ -1189,7 +1189,7 @@ header {
     width: 35px;
 }
 .quickproLink {
-    background: url("../images/iconsPro.png") no-repeat scroll right top transparent;
+    background: url("../img/iconsPro.png") no-repeat scroll right top transparent;
     border: 0 none;
     color: #FFFFFF;
     display: inline-block !important;
@@ -1414,7 +1414,7 @@ header {
 }
 .listing-block li {
 	display:block;
-	background:url(../images/listing_bullet.png) no-repeat 0px 9px;
+	background:url(../img/listing_bullet.png) no-repeat 0px 9px;
 	line-height:18px;
 	padding:3px 0px 3px 10px;
 }
@@ -1469,7 +1469,7 @@ header {
 .right-sidebar .listing-block p {
 }
 .right-sidebar .listing-block ul li {
-	background:url(../images/circle_outside.png) no-repeat 0px 11px;
+	background:url(../img/circle_outside.png) no-repeat 0px 11px;
 	padding:6px 0px 6px 13px;
 }
 .right-sidebar .social-block {
@@ -1648,10 +1648,10 @@ ul.form-list li input[type='checkbox'] {
 	line-height:18px;
 	font-size:14px;
 	padding-right:20px;
-	background:url(../images/expand_icon.png) no-repeat right 0px;
+	background:url(../img/expand_icon.png) no-repeat right 0px;
 }
 .q-a-block li a.ui-accordion-header-active {
-	background:url(../images/coleps_icon.png) no-repeat right 6px;
+	background:url(../img/coleps_icon.png) no-repeat right 6px;
 }
 .q-a-block li .ui-accordion-content {
 	display:block;
@@ -1764,7 +1764,7 @@ ul.form-list li input[type='checkbox'] {
 	font-size:12px;
 	color:#404040;
 	display:inline-block;
-	background:url(../images/left_nav_arrow.png) no-repeat 0px 10px;
+	background:url(../img/left_nav_arrow.png) no-repeat 0px 10px;
 	padding-left:12px;
 }
 .col-left .man-block ul li a:hover {
@@ -1824,7 +1824,7 @@ ul.form-list li input[type='checkbox'] {
 	width:25px;
 	height:16px;
 	text-indent:-999em;
-	background:url(../images/common.png) no-repeat;
+	background:url(../img/common.png) no-repeat;
 	float:left;
 	margin-top:4px;
 }
@@ -1910,7 +1910,7 @@ ul.form-list li input[type='checkbox'] {
 	z-index:1500;
 	right:-7px;
 	top:38px;
-	background:url(../images/next_img_btn.png) no-repeat;
+	background:url(../img/next_img_btn.png) no-repeat;
 }
 .img-slider .jcarousel-prev-horizontal {
 	cursor:pointer;
@@ -1921,7 +1921,7 @@ ul.form-list li input[type='checkbox'] {
 	z-index:1500;
 	left:-15px;
 	top:38px;
-	background:url(../images/prev_img_btn.png) no-repeat;
+	background:url(../img/prev_img_btn.png) no-repeat;
 }
 .main .product-info-box .product-img-box .img-slider ul li img {
 	float:left;
@@ -2148,7 +2148,7 @@ ul.form-list li input[type='checkbox'] {
 }
 .main .product-collateral .pro-detail ol li {
 	padding:3px 0px 3px 15px;
-	background:url(../images/desc_bullet.png) no-repeat 0px 7px;
+	background:url(../img/desc_bullet.png) no-repeat 0px 7px;
 }
 .main .product-collateral .pro-detail p {
 	margin:0px;
@@ -2811,7 +2811,7 @@ h1.page-title {
 	text-indent:-999em;
 	height:23px;
 	margin-left:8px;
-	background:url(../images/common.png);
+	background:url(../img/common.png);
 }
 .footer-wrapper footer .link-block ul.stay-connected-blcok .payment-block a.mastercard {
 	background-position:0px -39px;
@@ -2878,7 +2878,7 @@ h1.page-title {
     padding-left: 10px;
 }
 .mobMenu h1 a.menuBox {
-    background: url("../images/mobMenu.png") no-repeat scroll 0 4px transparent;
+    background: url("../img/mobMenu.png") no-repeat scroll 0 4px transparent;
     float: right;
     font-size: 0;
     height: 22px;
@@ -2895,11 +2895,11 @@ h1.page-title {
 .accordion ul { padding: 0; margin: 0; float: left; display: block; width: 100%; }
 .accordion li { background: #fff; cursor: pointer; list-style-type: none; padding: 0; margin: 0; float: left; display: block; width: 100%; position:relative;}
 .accordion li.active > em.open-close {
-    background: url("../images/mobMenu.png") no-repeat scroll 2px -64px transparent;
+    background: url("../img/mobMenu.png") no-repeat scroll 2px -64px transparent;
 }
 .accordion li div { padding: 20px; background: #aef; display: block; clear: both; float: left; width: 360px;}
 .accordion em.open-close {
-    background: url("../images/mobMenu.png") no-repeat scroll 2px -28px transparent;
+    background: url("../img/mobMenu.png") no-repeat scroll 2px -28px transparent;
     padding: 8px 14px;
     position: absolute;
     right: 0;

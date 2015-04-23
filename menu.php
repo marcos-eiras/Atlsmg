@@ -14,7 +14,7 @@
                     </li>
                    <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
                    <li <?php if(isset($active[5])) echo $active[5] ?>><a href="contato.php" title="contato">Contato</a></li>                
-                   <li <?php if(isset($active[6])) echo $active[6] ?>><a href="index.php?pg=noticias" title="noticias">Notícias</a></li><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/pages/Atlsmg/1560131997587069" title="facebook" target="_blank"><img src="logo/facebook.jpg" height="30px" width="25px"/></a>
+                   <li <?php if(isset($active[6])) echo $active[6] ?>><a href="index.php?pg=noticias" title="noticias">Notícias</a></li><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/pages/Atlsmg/1560131997587069" title="facebook" target="_blank"><img src="img/facebook.jpg" height="30px" width="25px"/></a>
                 </nav>
                 
                 <div class="mobMenu">
@@ -37,7 +37,7 @@
                     <li <?php if(isset($active[4])) echo $active[4] ?>><a href="faq.php" title="Faq">Faq</a></li>
                    <li <?php if(isset($active[5])) echo $active[5] ?>><a href="contato.php" title="contato">Contato</a></li>
                    <li <?php if(isset($active[6])) echo $active[6] ?>><a href="index.php?pg=noticias" title="noticias">Notícias</a></li>
-                   <li><a href="https://www.facebook.com/pages/Atlsmg/1560131997587069" title="facebook" target="_blank"><img src="logo/facebook.jpg" height="30px" width="25px"/></a></li>
+                   <li><a href="https://www.facebook.com/pages/Atlsmg/1560131997587069" title="facebook" target="_blank"><img src="img/facebook.jpg" height="30px" width="25px"/></a></li>
                       <span class="clearfix"></span>
                    </ul>
                   
