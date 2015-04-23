@@ -89,29 +89,36 @@ var SierraTecnologia = (function () {
             Controle_Noticias_Listagem(window.paginaid);
         }
         Controle_Menu_Cursos();
+        console.log('Chamou -> Main()');
     }
     
     function Controle_Home_Cursos(){ 
+        console.log('Chamou -> Controle_Home_Cursos()');
         $('.col-main-left').append(Visual_Home_Cursos(Modelo('Curso')));
     }
     
     function Controle_Menu_Cursos(){ 
+        console.log('Chamou -> Controle_Menu_Cursos()');
         $('.menucursos').append(Visual_Menu_Cursos(Modelo('Curso')));
     }    
     
     function Controle_Turma_Listagem(Curso){ 
+        console.log('Chamou -> Controle_Turma_Listagem(Curso)',Curso);
         $('#conteudo').append(Visual_Turma_Listagem(Modelo_Turma(Curso)));
     }
     
     function Controle_Noticias_Listagem(){ 
+        console.log('Chamou -> Controle_Noticias_Listagem()');
         $('#conteudo').append(Visual_Noticias_Listagem(Modelo("Noticias")));
     }
     
     function Controle_Noticia_Listagem(Noticia){ 
+        console.log('Chamou -> Controle_Noticia_Listagem(Noticia)',Noticia);
         $('#conteudo').append(Visual_Noticia_Listagem(Modelo_Noticia(Noticia)));
     }
 
     function Controle_Home_Noticias(){ 
+        console.log('Chamou -> Controle_Home_Noticias()');
         $('.menunoticias').append(Visual_Home_Noticias(Modelo('Noticias')));
     }    
     
@@ -119,6 +126,7 @@ var SierraTecnologia = (function () {
      * Funço Responsvel por fazer a conexao e retornar o json com o servidor
      */
     function Modelo(tipo){
+        console.log('Chamou -> Modelo(tipo)',tipo);
         var resultado = false;
         $.ajax({
             // url para o arquivo json.php
@@ -141,14 +149,17 @@ var SierraTecnologia = (function () {
      * @returns {undefined}
      */
     function Modelo_Turma(Curso){
+        console.log('Chamou -> Modelo_Turma(Curso)',Curso);
         return Modelo('Turma&id='+Curso);
     }
 
     function Modelo_Noticia(Noticia){
+        console.log('Chamou -> Modelo_Noticia(Noticia)',Noticia);
         return Modelo('Noticia&id='+Noticia);
     }
 
     function Visual_Menu_Cursos(data){
+        console.log('Chamou -> Visual_Menu_Cursos(data)',data);
         var html = "";
         var i;
 
@@ -163,6 +174,8 @@ var SierraTecnologia = (function () {
     }
 
     function Visual_Home_Cursos(data){
+        console.log('Chamou -> Visual_Home_Cursos(data)',data);
+        
         var html = "";
         var i;
         
@@ -176,6 +189,8 @@ var SierraTecnologia = (function () {
     }
     
     function Visual_Turma_Listagem(data){
+        console.log('Chamou -> Visual_Turma_Listagem(data)',data);
+        
         var html = "";
         var i;
 
@@ -192,10 +207,8 @@ var SierraTecnologia = (function () {
             html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
             <br></p><span style=\"color:#08c;\">Quantidade:</span> "+data[i].qnt+"<p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
             <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
-            <span style=\"color:#08c;\">Descrição:</span> "+data[i].descricao+"</p></div>";      
+            <span style=\"color:#08c;\">Descrição:</span> "+data[i].descricao+"<br/><a href=\""+ window.url_sistema+"/Curso/Turma/Inscricao_Fazer/"+data[i].id+"/\">Se Inscrever</a></p></div>";      
         }
-        
-        console.log('Chamou');
         
         
         
@@ -232,7 +245,9 @@ var SierraTecnologia = (function () {
     }
     
     
-        function Visual_Home_Noticias(data){
+    function Visual_Home_Noticias(data){
+        console.log('Chamou -> Visual_Home_Noticias(data)',data);
+        
         var html = "";
         var i;
 
@@ -245,7 +260,6 @@ var SierraTecnologia = (function () {
             
         }
         
-        console.log('Chamou');
                 
         
         if(i==0){
@@ -256,6 +270,8 @@ var SierraTecnologia = (function () {
     }
     
     function Visual_Noticias_Listagem(data){
+        console.log('Chamou -> Visual_Noticias_Listagem(data)',data);
+        
         var html = "";
         var i;
 
@@ -277,7 +293,6 @@ var SierraTecnologia = (function () {
             
         }
         
-        console.log('Chamou');
         
         
         

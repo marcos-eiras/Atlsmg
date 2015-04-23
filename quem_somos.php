@@ -197,7 +197,7 @@ Fim calendário
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 			   <?php
-		include'newsletter.php';	
+		
 	?>
 	</div>
 </section>

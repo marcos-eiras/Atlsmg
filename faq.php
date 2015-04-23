@@ -158,7 +158,7 @@ Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 		   <?php
-		include'newsletter.php';	
+		
 	?>
 	</div>
 </section>

@@ -41,7 +41,6 @@
     <ul class="bottom-links">
       <li><a href="index.php" title="Home">HOME</a></li>
       <li><a href="sobre.php" title="Empresa">EMPRESA</a></li>
-      <li><a href="faq.php" title="Faq">FAQ</a></li>
       <li><a href="contato.php" title="Contato">CONTATO</a></li>
     </ul>
     <p class="copyright-block">© 2015 ATLSMG - Todos os direitos reservados.</p>

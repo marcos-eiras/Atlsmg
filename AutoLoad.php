@@ -117,7 +117,7 @@ function Modelo_Turma($sqli){
     //$query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim, CuT.carga, CuT.descricao '.
     $query ='SELECT CuT.id, CuT.nome, CuT.qnt, DATE_FORMAT(CuT.inicio, "%d-%m-%Y") AS inicio, '
             . 'DATE_FORMAT(CuT.fim, "%d-%m-%Y") AS fim , CuT.carga, CuT.descricao FROM Curso_Turma AS CuT '.
-            'WHERE CuT.servidor=\'Fenix_Atls\' AND CuT.deletado=0 AND CuT.status=1 AND CuT.curso='.$curso.' ORDER BY inicio ASC';
+            'WHERE CuT.servidor=\'Fenix_Atls\' AND CuT.deletado=0 AND CuT.deletado=0 AND CuT.deletado=0 AND CuT.status=1 AND CuT.curso='.$curso.' ORDER BY inicio ASC';
     $query_result = $sqli->query($query);
     if($query_result===false) Visual_Erro($sqli->error);
     $contador = 0;

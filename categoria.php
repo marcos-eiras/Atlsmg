@@ -197,7 +197,7 @@ $(document).ready(function() {
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 			<?php
-		include'newsletter.php';	
+		
 	?>
 	</div>
 </section>
