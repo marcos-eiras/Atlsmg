@@ -21,51 +21,6 @@
 		include'top.php';	
 	?>
                   <section class="header-bottom">
-                    <div class="cart-block">
-					<ul>
-						<li>(2)</li>
-						<li><a href="cart.html" title="Cart"><img title="Item" alt="Item" src="img/item_icon.png" /></a></li>
-						<li>Item</li>
-					</ul>
-					<div id="minicart" class="remain_cart" style="display: none;">
-						 <p class="empty">You have 2 items in your shopping cart.</p>
-						 <ol>
-						 	<li>
-								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
-								<div class="detail-block">
-									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
-									<p>
-										<strong>1</strong> x $900.00
-									</p>
-									<a href="#" title="Details">Details</a>
-								</div>
-								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
-								</div>
-							</li>
-							<li>
-								<div class="img-block"><img src="img/small_img.png" title="" alt="" /></div>
-								<div class="detail-block">
-									<h4><a href="#" title="Htc Mobile 1120">Htc Mobile 1120</a></h4>
-									<p>
-										<strong>1</strong> x $900.00
-									</p>
-									<a href="#" title="Details">Details</a>
-								</div>
-								<div class="edit-delete-block">
-									<a href="#" title="Edit"><img src="img/edit_icon.png" alt="Edit" title="Edit" /></a>
-									<a href="#" title="Remove"><img src="img/delete_item_btn.png" alt="Remove" title="Remove" /></a>
-								</div>
-							</li>
-							<li>
-								<div class="total-block">Total:<span>$1,900.00</span></div>
-								<a href="cart.html" title="Checkout" class="colors-btn">Checkout</a>
-								<div class="clear"></div>
-							</li>
-						 </ol>
-					</div>
-				</div>
                   <!--  <div class="search-block">
                       <input type="text" value="" placeholder="Procurar" />
                       <input type="submit" value="Search" title="Search" />
