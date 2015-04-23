@@ -80,6 +80,7 @@ var SierraTecnologia = (function () {
     function Main(){
         if(Pag==='home'){
             Controle_Home_Cursos();
+            Controle_Home_Noticias();
         }else if(Pag==='turma'){
             Controle_Turma_Listagem(window.paginaid);
         }else if(Pag==='noticia'){
@@ -109,6 +110,10 @@ var SierraTecnologia = (function () {
     function Controle_Noticia_Listagem(Noticia){ 
         $('#conteudo').append(Visual_Noticia_Listagem(Modelo_Noticia(Noticia)));
     }
+
+    function Controle_Home_Noticias(){ 
+        $('.menunoticias').append(Visual_Home_Noticias(Modelo('Noticias')));
+    }    
     
     /**
      * Funço Responsvel por fazer a conexao e retornar o json com o servidor
@@ -137,6 +142,10 @@ var SierraTecnologia = (function () {
      */
     function Modelo_Turma(Curso){
         return Modelo('Turma&id='+Curso);
+    }
+
+    function Modelo_Noticia(Noticia){
+        return Modelo('Noticia&id='+Noticia);
     }
 
     function Visual_Menu_Cursos(data){
@@ -207,21 +216,7 @@ var SierraTecnologia = (function () {
             
              html = html+
                 ""+
-                data[i].id+
-                ""+
-                data[i].id+
-                ""+
-                data[i].nome+
-                ""+
-                data[i].qnt+
-                ""+
-                data[i].inicio+
-                ""+
-                data[i].fim+
-                ""+
-                data[i].carga+
-                ""+
-                data[i].descricao+
+                data[i].texto+
                 "<br><br>";
         }
         
@@ -230,7 +225,31 @@ var SierraTecnologia = (function () {
         
         
         if(i==0){
-            html = html + "No tem conteudo";
+            html = html + "Não tem conteúdo";
+        }
+        
+        return html;
+    }
+    
+    
+        function Visual_Home_Noticias(data){
+        var html = "";
+        var i;
+
+        if(data===false) return '';
+
+        for(i=0; i < data.length; i++){
+
+            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><a href=\"index.php?pg=noticia&id="+data[i].id+"\">"+data[i].nome+"</a></span>\n\
+            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"</div><br>";
+            
+        }
+        
+        console.log('Chamou');
+                
+        
+        if(i==0){
+            html = html + "Não tem conteúdo";
         }
         
         return html;
@@ -244,8 +263,17 @@ var SierraTecnologia = (function () {
 
         for(i=0; i < data.length; i++){
 
-            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
-            <br></p><span style=\"color:#08c;\">Texto:</span> "+data[i].texto+"<p><span style=\"color:#08c;\">Data:</span> "+data[i].data+"</div>"; 
+           //html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            //<br></p><span style=\"color:#08c;\">Texto:</span> "+data[i].texto+"<p><span style=\"color:#08c;\">Data:</span> "+data[i].data+"</div>"; 
+            
+            //html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            //<br></p><span style=\"color:#08c;\">Data:</span> "+data[i].data+"</div><br>";
+
+           // html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><li class=parent><a href=\"index.php?pg=noticia&id="+data[i].id+"\">"+data[i].nome+"</a></span></li>\n\
+           // <br></p><span style=\"color:#08c;\">Data:</span> "+data[i].data+"</div><br>";
+
+            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><a href=\"index.php?pg=noticia&id="+data[i].id+"\">"+data[i].nome+"</a></span>\n\
+            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"</div><br>";
             
         }
         
@@ -254,7 +282,7 @@ var SierraTecnologia = (function () {
         
         
         if(i==0){
-            html = html + "No tem conteudo";
+            html = html + "Não tem conteúdo";
         }
         
         return html;

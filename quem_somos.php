@@ -111,9 +111,10 @@ Este preparo do corpo docente ocorreu na primeira metade da década de noventa, 
 			</div>
 						
 		</div>
+            <!--
 		<aside class="right-sidebar" style="margin-top: 32px;">
 			<div class="block widget-searchwidget">
-				<!--<input type="text" value="Type to search..." />-->
+				<input type="text" value="Type to search..." />
 			</div>
 			
 			
@@ -190,9 +191,10 @@ Este preparo do corpo docente ocorreu na primeira metade da década de noventa, 
         </tr>
         </tbody>
     </table>
-<!--Fim calendário-->
-			
+Fim calendário
+                -->			
 		</aside>
+
 		<div class="clearfix"></div>
 		<div class="news-letter-container">
 			   <?php

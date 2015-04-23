@@ -61,8 +61,6 @@ function Visual_Imagem(&$foto,$altura = NULL,$largura = NULL, $ext='png'){
 }
 
 
-
-
 function Modelo_Noticia($sqli){
     if(!isset($_GET['id'])) Visual_Erro ('Noticia não selecionado');
     
@@ -90,9 +88,9 @@ function Modelo_Noticia($sqli){
 }
 
 function Modelo_Noticias($sqli){
-    $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
+    $select ='SELECT N.id, N.nome, N.texto, N.foto, DATE_FORMAT(N.data, "%d-%m-%Y") data';
     $query = ' FROM Noticia AS N ';
-    $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC'; // AND N.destaque=0
+    $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC LIMIT 4 '; // AND N.destaque=0
 
     $query_result = $sqli->query($select.$query.$where);
     if($query_result===false){
@@ -116,8 +114,9 @@ function Modelo_Turma($sqli){
     if(!isset($_GET['id'])) Visual_Erro ('Curso não selecionado');
     
     $curso = (int) $_GET['id'];
-    $query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim, CuT.carga, CuT.descricao '.
-            'FROM Curso_Turma AS CuT '.
+    //$query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim, CuT.carga, CuT.descricao '.
+    $query ='SELECT CuT.id, CuT.nome, CuT.qnt, DATE_FORMAT(CuT.inicio, "%d-%m-%Y") AS inicio, '
+            . 'DATE_FORMAT(CuT.fim, "%d-%m-%Y") AS fim , CuT.carga, CuT.descricao FROM Curso_Turma AS CuT '.
             'WHERE CuT.servidor=\'Fenix_Atls\' AND CuT.deletado=0 AND CuT.status=1 AND CuT.curso='.$curso.' ORDER BY inicio ASC';
     $query_result = $sqli->query($query);
     if($query_result===false) Visual_Erro($sqli->error);

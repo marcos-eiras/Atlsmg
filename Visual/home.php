@@ -20,7 +20,24 @@
 		<div class="col-main-left">
                     <h1 class="page-title">Cursos</h1>
                 </div>
-            <!--
+           
+  		<aside class="right-sidebar"><br/>
+                    <!--
+			<div class="block widget-searchwidget">
+				<input type="text" value="" placeholder="Procurar..."/>
+			</div>  
+                    -->
+                <!--
+                <h1 class="page-title">Todas as Noticias</h1>
+                <div id="menunoticias">
+                </div>                  
+                -->
+		<div class="menunoticias">
+                    <h1 class="page-title">Todas as Noticias</h1>
+                </div>                
+
+           
+<!--        
 		<aside class="right-sidebar">
 			<div class="block widget-searchwidget">
 				<input type="text" value="" placeholder="Procurar..."/>
@@ -100,14 +117,13 @@
     </table>
 </div>Fim calendário
 			</div>
-			
+-->			
 		</aside>
-                -->
-                
-		<div class="clearfix"></div>
+
+        	<div class="clearfix"></div>
 		<div class="news-letter-container">
               <?php
 		include'newsletter.php';	
-	?>
+                ?>
 	</div>
 </section>
