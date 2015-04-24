@@ -112,7 +112,7 @@
 <script type="text/javascript">
     window.paginatual = '<?php echo $pg; ?>';
     window.paginaid  = <?php echo $paginaid; ?>;
-    window.url_sistema  = <?php echo $endereco_admin; ?>;
+    window.url_sistema  = '<?php echo $endereco_admin; ?>';
 </script>
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/common.js"></script>
