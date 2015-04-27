@@ -8,7 +8,15 @@
     <ul>
       <li class="link-title"><a href="#" title="FALE CONOSCO">FALE CONOSCO</a></li>
 
-      <li><a href="contato.php" title="Contato">Contato</a></li>
+      <li><a href="contato.php" title="Contato">Razão Social: Associação Mineira de Ensino e Prevenção do Trauma – AMENT
+          
+              <br>
+
+              Endereço: Rua dos Otoni, no. 909 sala 1708 – Bairro Santa Efigênia – Belo Horizonte – MG<br>
+
+CEP.: 30.150-270<br>
+
+Tel: (31) 3142.5522</a></li>
     </ul>
 
     <ul>

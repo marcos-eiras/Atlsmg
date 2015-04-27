@@ -42,7 +42,7 @@
 			<div class="block compare-block">
 				<div class="block-title">Nossos Telefones</div>
 				<ul>
-					<li>(21) 2547-8125 / (21) 2548-7558</li>
+					<li>(31) 3142-5522</li>
 				</ul>
 			</div>
 			<div class="block community-block">
@@ -57,7 +57,7 @@
 				<div class="block-title">E-mail</div>
 				<ul>
 					
-					<li>web@fenixdigital.com.br</li>
+					<li>web@atlsmg.com.br</li>
 				
 				</ul>
 			</div>
