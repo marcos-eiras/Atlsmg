@@ -207,9 +207,16 @@ var SierraTecnologia = (function () {
             }
             
             html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
-            <br></p><span style=\"color:#08c;\">Quantidade:</span> "+data[i].qnt+"<p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
-            <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
-            <span style=\"color:#08c;\">Descrição:</span> "+data[i].descricao+"<br/><a href=\"index.php?pg=inscricao&id="+data[i].id+"\">Se Inscrever</a></p></div>";    
+            <br></p><p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
+            <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> ";
+            // Quantidade de horas no plural e singular
+            html = html+data[i].carga;
+            if(data[i].carga==='1'){
+                html = html+" hora<br>\n";
+            }else{
+                html = html+" horas<br>\n";
+            }
+            html = html+"<span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/><a href=\"index.php?pg=inscricao&id="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
             //"+ window.url_sistema+"/Curso/Turma/Inscricao_Fazer/"+data[i].id+"/
         }
         

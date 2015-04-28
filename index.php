@@ -40,7 +40,7 @@ try{
     define('DS', DIRECTORY_SEPARATOR);
     $ROOT = realpath(dirname(__FILE__)). DS;
     // Controle de Tempo de Processamento para controle de PERFORMACE
-    define('TEMPO_IMPRIMIR' , true);
+    define('TEMPO_IMPRIMIR' , false);
     if(TEMPO_IMPRIMIR===true){
         include($ROOT.'sistema'.DS.'App'.DS.'Tempo.php');
         $Log_Tempo = new \Framework\App\Tempo('Completo');

@@ -1,6 +1,7 @@
 <?php
 require_once 'lib/WideImage.php';
 require_once 'SiTec_Config.php';
+require_once ROOT_PADRAO.'App'.DS.'Funcao.php';
 
 
 
@@ -79,6 +80,7 @@ function Modelo_Noticia($sqli){
         if($campo->foto!==''){
             $campo->foto = Visual_Imagem($campo->foto,354,240,'jpg');
         }
+        $campo->data = data_eua_brasil($campo->data);
         $resultado[] = $campo;
         ++$contador;
     }
@@ -88,7 +90,7 @@ function Modelo_Noticia($sqli){
 }
 
 function Modelo_Noticias($sqli){
-    $select ='SELECT N.id, N.nome, N.texto, N.foto, DATE_FORMAT(N.data, "%d-%m-%Y") data';
+    $select ='SELECT N.id, N.nome, N.texto, N.foto, N.data';
     $query = ' FROM Noticia AS N ';
     $where = 'WHERE N.servidor=\'Fenix_Atls\' AND N.deletado=0 AND N.status=1 ORDER BY N.data DESC LIMIT 4 '; // AND N.destaque=0
 
@@ -102,6 +104,7 @@ function Modelo_Noticias($sqli){
         if($campo->foto!==''){
             $campo->foto = Visual_Imagem($campo->foto,354,240,'jpg');
         }
+        $campo->data = data_eua_brasil($campo->data);
         $resultado[] = $campo;
         ++$contador;
     }
@@ -115,8 +118,7 @@ function Modelo_Turma($sqli){
     
     $curso = (int) $_GET['id'];
     //$query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim, CuT.carga, CuT.descricao '.
-    $query ='SELECT CuT.id, CuT.nome, CuT.qnt, DATE_FORMAT(CuT.inicio, "%d-%m-%Y") AS inicio, '
-            . 'DATE_FORMAT(CuT.fim, "%d-%m-%Y") AS fim , CuT.carga, CuT.descricao FROM Curso_Turma AS CuT '.
+    $query ='SELECT CuT.id, CuT.nome, CuT.qnt, CuT.inicio, CuT.fim , CuT.carga, CuT.descricao FROM Curso_Turma AS CuT '.
             'WHERE CuT.servidor=\'Fenix_Atls\' AND CuT.deletado=0 AND CuT.deletado=0 AND CuT.deletado=0 AND CuT.status=1 AND CuT.curso='.$curso.' ORDER BY inicio ASC';
     $query_result = $sqli->query($query);
     if($query_result===false) Visual_Erro($sqli->error);
@@ -124,6 +126,8 @@ function Modelo_Turma($sqli){
     $resultado = Array();
     while ($campo = $query_result->fetch_object()) {
         $resultado[] = $campo;
+        $campo->inicio = data_eua_brasil($campo->inicio);
+        $campo->fim = data_eua_brasil($campo->fim);
         ++$contador;
     }
     return Array($resultado,$contador);
