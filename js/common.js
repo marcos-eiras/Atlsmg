@@ -193,7 +193,7 @@ var SierraTecnologia = (function () {
     function Visual_Turma_Listagem(data){
         console.log('Chamou -> Visual_Turma_Listagem(data)',data);
         
-        var html = "";
+        var html = "<div class=\"row\"><div class=\"row-same-height\">";
         var i;
 
         if(data===false) return '';
@@ -206,7 +206,7 @@ var SierraTecnologia = (function () {
               data[i].descricao = '';  
             }
             
-            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            html = html+"<div class=\"col-xs-6 col-xs-height\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
             <br></p><p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
             <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> ";
             // Quantidade de horas no plural e singular
@@ -216,7 +216,10 @@ var SierraTecnologia = (function () {
             }else{
                 html = html+" horas<br>\n";
             }
-            html = html+"<span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/><a href=\"index.php?pg=inscricao&id="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
+            if(data[i].descricao!==''){
+                html = html+"<span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/>";
+            }
+            html = html+"<a href=\"index.php?pg=inscricao&id="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
             //"+ window.url_sistema+"/Curso/Turma/Inscricao_Fazer/"+data[i].id+"/
         }
         
@@ -225,6 +228,7 @@ var SierraTecnologia = (function () {
         if(i==0){
             html = html + "Não tem conteúdo";
         }
+        html = html + "</div></div>";
         
         return html;
     }
