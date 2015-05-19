@@ -193,7 +193,7 @@ var SierraTecnologia = (function () {
     function Visual_Turma_Listagem(data){
         console.log('Chamou -> Visual_Turma_Listagem(data)',data);
         
-        var html = "<div class=\"row\"><div class=\"row-same-height\">";
+        var html = "";
         var i;
 
         if(data===false) return '';
@@ -206,20 +206,10 @@ var SierraTecnologia = (function () {
               data[i].descricao = '';  
             }
             
-            html = html+"<div class=\"col-xs-6 col-xs-height\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
+            html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
             <br></p><p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
-            <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> ";
-            // Quantidade de horas no plural e singular
-            html = html+data[i].carga;
-            if(data[i].carga==='1'){
-                html = html+" hora<br>\n";
-            }else{
-                html = html+" horas<br>\n";
-            }
-            if(data[i].descricao!==''){
-                html = html+"<span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/>";
-            }
-            html = html+"<a href=\"index.php?pg=inscricao&id="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
+            <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
+            <span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/><a href=\"index.php?pg=inscricao&id="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
             //"+ window.url_sistema+"/Curso/Turma/Inscricao_Fazer/"+data[i].id+"/
         }
         
@@ -228,7 +218,6 @@ var SierraTecnologia = (function () {
         if(i==0){
             html = html + "Não tem conteúdo";
         }
-        html = html + "</div></div>";
         
         return html;
     }
@@ -270,7 +259,7 @@ var SierraTecnologia = (function () {
         for(i=0; i < data.length; i++){
 
             html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><a href=\"index.php?pg=noticia&id="+data[i].id+"\">"+data[i].nome+"</a></span>\n\
-            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"</div><br>";
+            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"<br></p><span style=\"color:#08c;\">Foto</span> "+data[i].foto+"</div><br>";
             
         }
         
