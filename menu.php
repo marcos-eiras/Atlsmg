@@ -6,7 +6,7 @@
                     <li <?php if(isset($active[2])) echo $active[2] ?>><a href="cadastrar.php" title="Médico">Cadastro de Médico</a></li>
                      <li <?php if(isset($active[6])) echo $active[6] ?>><a href="quem_somos.php" title="Médico">Quem somos</a></li>
                      <li <?php if(isset($active[7])) echo $active[7] ?>><a href="fotos.php" title="Médico">Fotos</a></li>
-                    <li <?php if(isset($active[3])) echo $active[3] ?> class="parent"><a href="#" title="curso">Curso</a>
+                    <li <?php if(isset($active[3])) echo $active[3] ?> class="parent"><a href="#" title="curso">Cursos</a>
                       <ul style="width: 100px; display: none;">
                        <!--<li class="parent"><a href="categoria.php">Cardiologia</a></li>-->
                         <li class="li menucursos"></li>
@@ -28,7 +28,7 @@
                     <li <?php if(isset($active[2])) echo $active[2] ?>><a href="cadastrar.php" title="Médico">Cadastro de Médico</a></li>
                      <li <?php if(isset($active[6])) echo $active[6] ?>><a href="quem_somos.php" title="Médico">Quem somos</a></li>
                      <li <?php if(isset($active[7])) echo $active[7] ?>><a href="fotos.php" title="Médico">Fotos</a></li>
-                    <li <?php if(isset($active[3])) echo $active[3] ?>><a href="#" title="curso">Curso</a>
+                    <li <?php if(isset($active[3])) echo $active[3] ?>><a href="#" title="curso">Cursos</a>
                       <ul>
                         <li class="li menucursos"></li>
                       </ul>
