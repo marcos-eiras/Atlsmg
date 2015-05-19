@@ -4,6 +4,7 @@ include('SiTec_Config.php');
 
 $grupo = 15;
 $grupo_nome = 'Médico';
+$mensagem = 'Cadastro de '.$grupo_nome.' efetuado com Sucesso.';
 
 if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     
@@ -26,84 +27,124 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
             '$("#'.$valor2.'").css(\'border\', \'2px solid #FFAEB0\').focus();'
     );*/
     
-   if(isset($_POST['crm'])){$crm = anti_injection($_POST['crm']);
+   if(isset($_POST['crm'])){
+       $crm = anti_injection($_POST['crm']);
+       $mensagem .= '<br><b>CRM:</b>'.$crm;
     }else{
         $crm = '';
     }
-   if(isset($_POST['fisica'])){$fisica = anti_injection($_POST['fisica']);
+   if(isset($_POST['fisica'])){
+       $fisica = anti_injection($_POST['fisica']);
+       $mensagem .= '<br><b>Fisica:</b>'.$fisica;
     }else{
         $fisica = '';
     }
-   if(isset($_POST['nome'])){$nome = anti_injection($_POST['nome']);
+   if(isset($_POST['nome'])){
+       $nome = anti_injection($_POST['nome']);
+       $mensagem .= '<br><b>Nome:</b>'.$nome;
     }else{$nome = '';}
-   if(isset($_POST['rg'])){$rg = anti_injection($_POST['rg']);
+   if(isset($_POST['rg'])){
+       $rg = anti_injection($_POST['rg']);
+       $mensagem .= '<br><b>Rg:</b>'.$rg;
     }else{$rg = '';}
-   if(isset($_POST['orgao'])){$orgao = anti_injection($_POST['orgao']);
+   if(isset($_POST['orgao'])){
+       $orgao = anti_injection($_POST['orgao']);
+       $mensagem .= '<br><b>Orgão:</b>'.$orgao;
     }else{$orgao = '';}
-   if(isset($_POST['razao_social'])){$razao_social = anti_injection($_POST['razao_social']);
+   if(isset($_POST['razao_social'])){
+       $razao_social = anti_injection($_POST['razao_social']);
+       $mensagem .= '<br><b>Razão Social:</b>'.$razao_social;
     }else{$razao_social= '';}
-   if(isset($_POST['nome_contato'])){$nome_contato = anti_injection($_POST['nome_contato']);
+   if(isset($_POST['nome_contato'])){
+       $nome_contato = anti_injection($_POST['nome_contato']);
+       $mensagem .= '<br><b>Nome do Contato:</b>'.$nome_contato;
     }else{$nome_contato = '';}
-   if(isset($_POST['nomefantasia'])){$nomefantasia = anti_injection($_POST['nomefantasia']);
+   if(isset($_POST['nomefantasia'])){
+       $nomefantasia = anti_injection($_POST['nomefantasia']);
+       $mensagem .= '<br><b>Nome Fantasia:</b>'.$nomefantasia;
     }else{$nomefantasia = '';}
-   if(isset($_POST['cnpj'])){$cnpj = anti_injection($_POST['cnpj']);
+   if(isset($_POST['cnpj'])){
+       $cnpj = anti_injection($_POST['cnpj']);
+       $mensagem .= '<br><b>Cnpj:</b>'.$cnpj;
     }else{$cnpj = '';}
-   if(isset($_POST['cnpj_insc'])){$cnpj_insc = anti_injection($_POST['cnpj_insc']);
+   if(isset($_POST['cnpj_insc'])){
+       $cnpj_insc = anti_injection($_POST['cnpj_insc']);
+       $mensagem .= '<br><b>Cnpj Inscrição:</b>'.$cnpj_insc;
     }else{$cnpj_insc = '';}
-   if(isset($_POST['perfil_nascimento'])){$perfil_nascimento = anti_injection($_POST['perfil_nascimento']);
+   if(isset($_POST['perfil_nascimento'])){
+       $perfil_nascimento = anti_injection($_POST['perfil_nascimento']);
+       $mensagem .= '<br><b>Nascimento:</b>'.$perfil_nascimento;
     }else{$perfil_nascimento = '';}
-   if(isset($_POST['email'])){$email = anti_injection($_POST['email']);
+   if(isset($_POST['email'])){
+       $email = anti_injection($_POST['email']);
+       $mensagem .= '<br><b>Email:</b>'.$email;
     }else{$email = '';}
-   if(isset($_POST['telefone'])){$telefone = anti_injection($_POST['telefone']);
+   if(isset($_POST['telefone'])){
+       $telefone = anti_injection($_POST['telefone']);
+       $mensagem .= '<br><b>Telefone:</b>'.$telefone;
     }else{$telefone = '';}
-   if(isset($_POST['celular'])){$celular = anti_injection($_POST['celular']);
+   if(isset($_POST['celular'])){
+       $celular = anti_injection($_POST['celular']);
+       $mensagem .= '<br><b>Celular:</b>'.$celular;
     }else{$celular = '';}
-   if(isset($_POST['login'])){$login = anti_injection($_POST['login']);
+   if(isset($_POST['login'])){
+       $login = anti_injection($_POST['login']);
+       $mensagem .= '<br><b>Login:</b>'.$login;
     }else{exit;}
-   if(isset($_POST['senha'])){$senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']);
+   if(isset($_POST['senha'])){
+       $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']);
     }else{exit;}
     if(isset($_POST['telefone2'])){
         $telefone2 = anti_injection($_POST['telefone2']);
+       $mensagem .= '<br><b>Telefone2:</b>'.$telefone2;
     }else{
         $telefone2 = '';
     }
     if(isset($_POST['pais'])){
         $pais = anti_injection($_POST['pais']);
+       $mensagem .= '<br><b>Pais:</b>'.$pais;
     }else{
         $pais = '1';
     }
     if(isset($_POST['estado'])){
         $estado = anti_injection($_POST['estado']);
+       $mensagem .= '<br><b>Estado:</b>'.$estado;
     }else{
         $estado = '0';
     }
     if(isset($_POST['cidade'])){
         $cidade = anti_injection($_POST['cidade']);
+       $mensagem .= '<br><b>Cidade:</b>'.$cidade;
     }else{
         $cidade = '0';
     }
     if(isset($_POST['bairro'])){
         $bairro = anti_injection($_POST['bairro']);
+       $mensagem .= '<br><b>Bairro:</b>'.$bairro;
     }else{
         $bairro = '0';
     }
     if(isset($_POST['endereco'])){
         $endereco = anti_injection($_POST['endereco']);
+       $mensagem .= '<br><b>Endereço:</b>'.$endereco;
     }else{
         $endereco = '0';
     }
     if(isset($_POST['numero'])){
         $numero = anti_injection($_POST['numero']);
+       $mensagem .= '<br><b>Número:</b>'.$numero;
     }else{
         $numero = '0';
     }
     if(isset($_POST['site'])){
         $site = anti_injection($_POST['site']);
+       $mensagem .= '<br><b>Site:</b>'.$site;
     }else{
         $site = 'http://';
     }
     if(isset($_POST['cep'])){
         $cep = anti_injection($_POST['cep']);
+       $mensagem .= '<br><b>Cep:</b>'.$cep;
     }else{
         $cep = '0';
     }
@@ -275,6 +316,21 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         
         $Visual->Json_Info_Update('Historico', false);
         echo $Visual->Json_Retorna();
+        
+        
+        // Envia EMAIL
+        require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
+        $mailer = new \Framework\Classes\Email();
+        $send	= $mailer->setTo('atls@atlsmg.com.br', 'Ricardo Sierra')
+                    ->setSubject('Erro - '.$errno.' - '.SISTEMA_NOME)
+                    ->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)
+                    ->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
+                    ->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
+                    ->setMessage($mensagem)
+                    ->setWrap(78)->send();
+        
+        
+        
         exit;
     }
     
