@@ -49,7 +49,8 @@
 				<div class="block-title">Endereço</div>
 				<ul>
 					
-					<li>Avenida Nossa Senhora de Copacabana n° 613 - sala 302</li>
+					<li>Rua dos Otoni, no. 909 sala 1708  Bairro Santa Efigênia <br> Belo Horizonte – MG</li>
+                    <li>CEP.: 30.150-270</li>
 				
 				</ul>
 			</div>
@@ -57,7 +58,7 @@
 				<div class="block-title">E-mail</div>
 				<ul>
 					
-					<li>web@atlsmg.com.br</li>
+					<li>atls@atlsmg.com.br</li>
 				
 				</ul>
 			</div>
@@ -79,6 +80,10 @@
 						<label>Telefone</label>
 						<input type="text" name="Telefone" required/>
 					</li>
+                    <li class="left">
+						<label>Assunto</label>
+						<input type="text" name="Assunto" required/>
+					</li>
 					<li class="full-row">
 						<label>Mensagem<em>*</em></label>
 						<textarea name="Mensagem" placeholder="Mensagem" required/></textarea>
@@ -90,9 +95,9 @@
                     <!-- CONTEUDO FORMULARIO - CAMPOS -->
 
 <input name="nome_empresa" type="hidden" value="ATLSMG" />
-<input name="destinario" type="hidden" value="comercial@fenixdigital.com.br" />
+<input name="destinario" type="hidden" value="annaharry@atlsmg.com.br" />
 <input name="assunto" type="hidden" value="[CONTATO SITE - ATLSMG CURSOS]" />
-<input name="remetente" type="hidden" value="comercial@fenixdigital.com.br" />
+<input name="remetente" type="hidden" value="annaharry@atlsmg.com.br" />
 <input name="retorno" type="hidden" value="http://fenixdigital.net.br/teste/atlsmg/enviado-sucesso.php"/>
 	
 							    		</form>

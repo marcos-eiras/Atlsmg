@@ -8,10 +8,7 @@
     <ul>
       <li class="link-title"><a href="#" title="FALE CONOSCO">FALE CONOSCO</a></li>
 
-      <li><a href="contato.php" title="Contato">Razão Social: Associação Mineira de Ensino e Prevenção do Trauma – AMENT
-          
-              <br>
-
+      <li><a href="contato.php" title="Contato">
               Endereço: Rua dos Otoni, no. 909 sala 1708 – Bairro Santa Efigênia – Belo Horizonte – MG<br>
 
 CEP.: 30.150-270<br>
@@ -28,10 +25,7 @@ Tel: (31) 3142.5522</a></li>
     <ul>
 
       <li class="link-title"><a href="#" title="ABOUTUS">SOBRE NÓS</a></li>
-      <li class="aboutus-block">Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Vivamus sit
-        amet ligula lectus, a mollis diam. Nulla
-        porttitor pulvinar elit... <a href="sobre.php" title="read more">leia mais</a> </li>
+      <li class="aboutus-block">Nos últimos 40 anos, o Colégio Americano de Cirurgiões e o seu Comitê de Trauma trabalharam no intuito de estabelecer linhas normativas de conduta para o atendimento ao paciente traumatizado.... <a href="quem_somos.php" title="read more">leia mais</a> </li>
     </ul>
 
     <!--<ul class="stay-connected-blcok">

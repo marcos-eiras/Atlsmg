@@ -54,7 +54,7 @@
                        <?php
 		include'top.php';	
 	?>
-                  <section class="header-bottom">
+                  <!--<section class="header-bottom">
                     <div class="cart-block">
 					<ul>
 						<li>(2)</li>
@@ -103,8 +103,8 @@
                    <!-- <div class="search-block">
                        <input type="text" value="" placeholder="Procurar" />
                       <input type="submit" value="Search" title="Search" />
-                    </div>-->
-                  </section>
+                    </div>
+                  </section>-->
                 </div>
                 <h1 class="logo"><a href="index.php" title="Logo">
                   <img title="Logo" alt="Logo" src="img/logo.png" />

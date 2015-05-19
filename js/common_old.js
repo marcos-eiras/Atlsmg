@@ -259,7 +259,7 @@ var SierraTecnologia = (function () {
         for(i=0; i < data.length; i++){
 
             html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><a href=\"index.php?pg=noticia&id="+data[i].id+"\">"+data[i].nome+"</a></span>\n\
-            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"<br></p><span style=\"color:#08c;\">Foto</span> "+data[i].foto+"</div><br>";
+            <br></p><span style=\"color:#08c;\">Data do Cadastro:</span> "+data[i].data+"</div><br>";
             
         }
         
