@@ -312,22 +312,23 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         //$params = Array('Url'=>$endereco_admin,'Tempo'=>10);
         //$Visual->Json_IncluiTipo('Redirect',$params);
         
-        
-        
-        $Visual->Json_Info_Update('Historico', false);
-        echo $Visual->Json_Retorna();
-        
-        
         // Envia EMAIL
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
         $mailer = new \Framework\Classes\Email();
-        $send	= $mailer->setTo('atls@atlsmg.com.br', 'Ricardo Sierra')
-                    ->setSubject('Erro - '.$errno.' - '.SISTEMA_NOME)
+        $send	= $mailer->setTo('atlsmgbh@gmail.com', 'Contato ATLSMG')
+                    ->setSubject('Cadastro Efetuado com Sucesso '.SISTEMA_NOME)
                     ->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)
                     ->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
                     ->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
                     ->setMessage($mensagem)
                     ->setWrap(78)->send();
+        
+        //var_dump($send,$mailer);
+        
+        $Visual->Json_Info_Update('Historico', false);
+        echo $Visual->Json_Retorna();
+        
+        
         
         
         
@@ -346,11 +347,11 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
 <html lang="en">
 <!--<![endif]-->
 <head>
-    <link href="<?php echo $endereco_admin; ?>/web/min/?f=sistema/jquery-ui/jquery-ui.min.css,sistema/bootstrap/css/bootstrap.min.css,sistema/bootstrap/css/bootstrap-theme.min.css,sistema/nprogress/nprogress.css,sistema/toastr/toastr.min.css,css/plugins/jquery.tiptip.css,css/plugins/jquery.blockui.css,css/jcalendar.css,css/plugins/jquery.fullcalendar.css,css/plugins/jquery.fullcalendar.print.css,assets/font-awesome/css/font-awesome.css,assets/metr-folio/css/metro-gallery.css,assets/uniform/css/uniform.default.css,assets/chosen/chosen.min.css,assets/jquery-tags-input/jquery.tagsinput.css,assets/bootstrap-datepicker/css/datepicker.css,assets/bootstrap-timepicker/compiled/timepicker.css,assets/bootstrap-colorpicker/css/colorpicker.css,assets/bootstrap-daterangepicker/daterangepicker.css,assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css,sistema/bootstrap-duallistbox/bootstrap-duallistbox.css,sistema/data-tables/DT_bootstrap.css,css/sistema.css" rel="stylesheet" />
+    <link href="<?php echo $endereco_admin; ?>/web/min/?f=sistema/jquery-ui/jquery-ui.min.css,sistema/bootstrap/css/bootstrap.css,sistema/bootstrap/css/bootstrap-theme.css,sistema/bootstrap/css/bootstrap-fileupload.css,sistema/nprogress/nprogress.css,sistema/toastr/toastr.min.css,css/plugins/jquery.blockui.css,css/jcalendar.css,assets/font-awesome/css/font-awesome.css,assets/metr-folio/css/metro-gallery.css,assets/uniform/css/uniform.default.css,sistema/chosen/chosen.css,sistema/bootstrap-duallistbox/bootstrap-duallistbox.css,sistema/data-tables/DT_bootstrap.css,sistema/sistema.css" rel="stylesheet" />
     <?php
         include'header.php';	
     ?>
-   
+    
 </head>
 <body>
 	<div class="mainContainer sixteen container">
@@ -377,11 +378,11 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
               </header>
             </div>
             
-           <section class="content-wrapper">
+    <section class="content-wrapper">
 	<div class="content-container container">
 
 
-   <?php /* FORMULARIO */ ?>
+            <?php /* FORMULARIO */ ?>
              <!-- BEGIN PAGE CONTAINER-->
              <div class="container-fluid">
                 <!-- BEGIN PAGE HEADER-->   
@@ -644,91 +645,20 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                 <!-- END PAGE CONTENT-->         
              </div>
              <!-- END PAGE CONTAINER-->
-          </div>
-          <!-- END PAGE -->  
-          <?php /* FIM FORMULARIO */ ?>
-
-
-            </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
+        <?php /* FIM FORMULARIO */ ?>
+        </div>
+        <!-- END PAGE -->
+    </section>
+</div> 
+    
+<!--Footer Block-->
+<section class="footer-wrapper">
+  <footer class="container">
+    <?php
+    include'footer.php';
+    ?>
+  </footer>
 </section>
-    </div> 
-<article style="display:none;">
-	<section id="quick-view-container" class="quick-view-wrapper">
-	<div class="quick-view-container">
-		<div class="quick-view-left">
-			<h2>Sunglass RB3184</h2>
-			<div class="product-img-box">
-				<p class="product-image">
-					<img src="img/sale_icon_img.png" title="Sale" alt="Sale" class="sale-img" />
-					<a href="view.html" title="Image"><img src="img/quick_view_img.png" title="Image" alt="Image" /></a></p>
-				<ul class="thum-img">
-					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
-					<li><img  src="img/quick_thum_img.png" title="" alt="" /></li>
-				</ul>
-			</div>
-		</div>
-		<div class="quick-view-right tabs">
-			<ul class="tab-block tabNavigation">
-				<li><a class="selected" title="Overview" href="#tabDetail">Detalhes</a></li>
-				<li><a title="Description" href="#tabDes">Descrição</a></li>
-			</ul>
-			<div id="tabDetail" class="tabDetail">
-            	<div class="first-review">Seja o primeiro a comentar o produto</div>
-			<div class="price-box">
-				<span class="price">R$ 600.00</span>			</div>
-			<div class="availability">em estoque</div>
-			<div class="color-size-block">
-				<div class="label-row">
-					<label><em>*</em> cor</label>
-					<span class="required">* Campos obrigatórios</span>				</div>
-				<div class="select-row">
-					<select><option>-- Please Select --</option></select>
-				</div>
-				<div class="label-row">
-					<label><em>*</em> tamanho</label>
-				</div>
-				<div class="select-row">
-					<select><option>-- Please Select --</option></select>
-				</div>
-			</div>
-			<div class="add-to-cart-box">
-				<span class="qty-box">
-					<label for="qty">Qtd:</label>
-					<a class="prev" title="" href="#"><img alt="" title="" src="img/qty_prev.png"></a>
-					<input type="text" name="qty" class="input-text qty" id="qty" maxlength="12" value="1">
-					<a class="next" title="" href="#"><img alt="" title="" src="img/qty_next.png"></a>				</span>
-				<button title="Adicionar ao Carrinho" class="form-button"><span>Adicionar ao Carrinho</span></button>
-			</div>
-            </div>
-            <div id="tabDes" class="tabDes">
-            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat odio, suscipit eu porta et, ultricies id sapien. Quisque posuere odio eget lectus suscipit sodales. Sed consequat, leo ut varius scelerisque, augue massa tincidunt est, et tincidunt enim tortor a metus. In sit amet diam in tellus tincidunt mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi hendrerit eleifend tortor, a dapibus tellus suscipit porta. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In mollis adipiscing mi et volutpat. Aliquam vitae dui nunc. Nulla ac ante eu massa dictum volutpat. Sed mauris sem, posuere sit amet pretium consectetur, ullamcorper vel orci. Aenean feugiat luctus lectus ac hendrerit. Fusce pulvinar, mauris eget sodales suscipit, diam neque condimentum lectus, id imperdiet felis turpis egestas neque. In aliquet orci eget nisl sollicitudin sed gravida tortor commodo</p>
-            </div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-</section>
-</article>       
-            <!--Footer Block-->
-            <section class="footer-wrapper">
-              <footer class="container">
-                <?php
-        	include'footer.php';
-		?>
-              </footer>
-            </section>
 
 <?php /*LAYOULT DO ADMIN */  /*?>
       
@@ -748,7 +678,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     <script type="text/javascript">console.time('Sistema');</script>  
     
     
-      <div class="push"></div><!-- .push --><div id="escondido"></div><div class="growlUI" style="display:none;"><h1>SierraTecnologia</h1> <h2>Ricardo Sierra sierra.csi@gmail.com</h2></div><div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div><div class="modal-body"></div><div class="modal-footer"></div></div><script type="text/javascript" src="<?php echo $endereco_admin; ?>/web/min/?f=lang/ptBR/Linguagem.js,sistema/modernizr/modernizr.js,sistema/jquery/jquery.min.js,sistema/jquery.browser.js,sistema/historico/jquery.history.js,sistema/nprogress/nprogress.js,sistema/toastr/toastr.min.js,js/jquery/jquery.blockUI.js,js/jquery/jquery.tabify.js,js/jquery/jquery.limit.js,assets/bootstrap-mask/jquery.maskedinput-1.3.min.js,js/jquery/jquery.fullcalendar.js,sistema/jquery-ui/jquery-ui.min.js,sistema/bootstrap/js/bootstrap.min.js,sistema/data-tables/jquery.dataTables.js,assets/uniform/jquery.uniform.min.js,assets/chosen/chosen.jquery.min.js,assets/jquery-tags-input/jquery.tagsinput.min.js,assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js,assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js,sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox.js,assets/bootstrap-datepicker/js/bootstrap-datepicker.js,assets/bootstrap-timepicker/js/bootstrap-timepicker.js,assets/bootstrap-timepicker/jquery-ui-timepicker-addon.js,assets/bootstrap-daterangepicker/date.js,assets/bootstrap-daterangepicker/daterangepicker.js,assets/jquery-slimscroll/jquery.slimscroll.min.js,assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js,assets/bootstrap-inputmask/bootstrap-inputmask.min.js,js/plugins/form-component.js,assets/metr-folio/js/jquery.metro-gal.plugins.min.js,assets/metr-folio/js/jquery.metro-gal.megafoliopro.js,sistema/sistema.js"></script><script type="text/javascript" language="javascript">$(document).ready(function() {if(window.location.hash!='') location.href='<?php echo $endereco_admin; ?>/'+window.location.hash.replace(/#/g, '');ConfigArquivoPadrao = '<?php echo $endereco_admin; ?>/';Config_Form_Maiusculo = false;UserLogado = 2;Configuracoes_Template = new Array();Configuracoes_Template["datatable_sdom"]="<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>";Configuracoes_Template["datatable_sPaginationType"]="bootstrap";Configuracoes_Template["datatable_bJQueryUI"]="";Configuracoes_Template["datatable_bAutoWidth"]="1";});</script>
+      <div class="push"></div><!-- .push --><div id="escondido"></div><div class="growlUI" style="display:none;"><h1>SierraTecnologia</h1> <h2>Ricardo Sierra sierra.csi@gmail.com</h2></div><div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div><div class="modal-body"></div><div class="modal-footer"></div></div><script type="text/javascript" src="<?php echo $endereco_admin; ?>/web/min/?f=lang/ptBR/Linguagem.js,sistema/modernizr/modernizr.js,sistema/jquery/jquery.min.js,sistema/jquery.browser.js,sistema/historico/jquery.history.js,sistema/nprogress/nprogress.js,sistema/toastr/toastr.min.js,js/jquery/jquery.blockUI.js,js/jquery/jquery.tabify.js,assets/bootstrap-mask/jquery.maskedinput-1.3.min.js,sistema/bootstrap/js/bootstrap.js,sistema/bootstrap/js/bootstrap-fileupload.js,sistema/data-tables/jquery.dataTables.js,sistema/chosen/chosen.jquery.js,sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox.js,sistema/sistema.js"></script><script type="text/javascript" language="javascript">$(document).ready(function() {if(window.location.hash!='') location.href='<?php echo $endereco_admin; ?>/'+window.location.hash.replace(/#/g, '');ConfigArquivoPadrao = '<?php echo $endereco_admin; ?>/';Config_Form_Maiusculo = false;UserLogado = 2;Configuracoes_Template = new Array();Configuracoes_Template["datatable_sdom"]="<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>";Configuracoes_Template["datatable_sPaginationType"]="bootstrap";Configuracoes_Template["datatable_bJQueryUI"]="";Configuracoes_Template["datatable_bAutoWidth"]="1";});</script>
       
     
 <!-- RICARDO REBELLO SIERRA <web@ricardosierra.com.br>  -->    <?php /*<script src="<?php echo $endereco_admin; ?>/layoult/metrolab/js/extra.js"></script>
@@ -764,7 +694,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     <!--common script for all pages-->
     <script src="<?php echo $endereco_admin; ?>/layoult/metrolab/js/common-scripts.js"></script>*/ ?>
     <script type="text/javascript">console.timeEnd('Sistema');Sierra.Control_Layoult_Recarrega_Formulario();function Control_Layoult_Botoes(){ return true; }function Control_Atualizacao(){ return true; }</script>
-    
 <script src="js/ddsmoothmenu.js"></script>
 <script src="js/common.js"></script>
     <!--Ver detalhes Block-->

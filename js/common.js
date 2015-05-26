@@ -271,7 +271,15 @@ var SierraTecnologia = (function () {
         
         return html;
     }
-    
+    /**
+     * HTML e OUTPUT da Listagem de Noticias
+     * 
+     * @param {type} data
+     * @returns {String}
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.0.1
+     */
     function Visual_Noticias_Listagem(data){
         console.log('Chamou -> Visual_Noticias_Listagem(data)',data);
         
