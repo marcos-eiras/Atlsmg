@@ -138,23 +138,62 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     }
     if(isset($_POST['site'])){
         $site = anti_injection($_POST['site']);
-       $mensagem .= '<br><b>Site:</b>'.$site;
+        $mensagem .= '<br><b>Site:</b>'.$site;
     }else{
         $site = 'http://';
     }
     if(isset($_POST['cep'])){
         $cep = anti_injection($_POST['cep']);
-       $mensagem .= '<br><b>Cep:</b>'.$cep;
+        $mensagem .= '<br><b>Cep:</b>'.$cep;
     }else{
         $cep = '0';
+    }
+    
+    
+        
+    if(isset($_POST['perfil_nascimento'])){
+        $perfil_nascimento = anti_injection($_POST['perfil_nascimento']);
+        $mensagem .= '<br><b>Data de Nascimento:</b>'.$perfil_nascimento;
+    }else{
+        $perfil_nascimento = '';
+    }
+    if(isset($_POST['telefone2'])){
+        $telefone2 = anti_injection($_POST['telefone2']);
+        $mensagem .= '<br><b>Telefone Comercial:</b>'.$telefone2;
+    }else{
+        $telefone2 = '';
+    }
+    
+
+    // INformação
+    if(isset($_POST['info_formatura_ano'])){
+        $info_formatura_ano = anti_injection($_POST['info_formatura_ano']);
+        $mensagem .= '<br><b>Ano de Formatura:</b>'.$info_formatura_ano;
+    }else{
+        $info_formatura_ano = '';
+        
+    }
+    if(isset($_POST['info_especialidade'])){
+        $info_especialidade = anti_injection($_POST['info_especialidade']);
+        $mensagem .= '<br><b>Especialidade:</b>'.$info_especialidade;
+    }else{
+        $info_especialidade = '';
+        
+    }
+    if(isset($_POST['info_hospital_trabalha'])){
+        $info_hospital_trabalha = anti_injection($_POST['info_hospital_trabalha']);
+        $mensagem .= '<br><b>Hospital onde Trabalha:</b>'.$info_hospital_trabalha;
+    }else{
+        $info_hospital_trabalha = '';
+        
     }
 
 
     //Verifica Grupos
-    if ($_POST['senha']=='' || $login=='' || $email=='') {
+    if ($_POST['senha']=='' || $login=='' || $email=='' || $rg=='' || $crm=='' || $cpf=='') {
         $mensagens = array(
             "tipo"              => 'erro',
-            "mgs_principal"     => 'Categoria Incorreta',
+            "mgs_principal"     => 'Dados Obrigatórios Faltando',
             "mgs_secundaria"    => 'Preencha Todos os Dados Obrigatorios'
         );
         $Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -238,10 +277,10 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $sucesso = $db->query('INSERT INTO usuario 
     (servidor,grupo,fisica,crm,nome,rg,orgao,razao_social,nome_contato,nomefantasia,cnpj,cnpj_insc,perfil_nascimento,email,telefone,celular,login,senha,
     
-    site,cep,pais,estado,cidade,bairro,endereco,numero,telefone2, log_date_add)
+    perfil_nascimento,telefone2,site,cep,pais,estado,cidade,bairro,endereco,numero,telefone2, log_date_add)
     VALUES (\'Fenix_Atls\',\''.$grupo.'\',\''.$fisica.'\',\''.$crm.'\',\''.$nome.'\',\''.$rg.'\',\''.$orgao.'\',\''.$razao_social.'\',\''.$nome_contato.'\',\''.$nomefantasia.'\',\''.$cnpj.'\',\''.$cnpj_insc.'\',\''.$perfil_nascimento.'\',\''.$email.'\',\''.$telefone.'\',\''.$celular.'\',\''.$login.'\',\''.$senha.'\','
                 . ''
-                . '\''.$site.'\',\''.$cep.'\',\''.$pais.'\',\''.$estado.'\',\''.$cidade.'\',\''.$bairro.'\',\''.$endereco.'\',\''.$numero.'\',\''.$telefone2.'\',\''.APP_HORA.'\')');
+                . '\''.$perfil_nascimento.'\',\''.$telefone2.'\',\''.$site.'\',\''.$cep.'\',\''.$pais.'\',\''.$estado.'\',\''.$cidade.'\',\''.$bairro.'\',\''.$endereco.'\',\''.$numero.'\',\''.$telefone2.'\',\''.APP_HORA.'\')');
         if($sucesso===false){
             
             $mensagens = array(
@@ -258,35 +297,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         while ($valor = $identificador->fetch_object()) {
             $identificador_id = $valor->id;
         }
-        
-        // Verifica se tem grupos
-        //caminhoneiro
-        // Cadastros especificos
-
-        if(isset($_POST['categoria'])){$categoria = anti_injection($_POST['categoria']);
-         }else{$categoria = '';}
-        if(isset($_POST['capacidade'])){$capacidade = anti_injection($_POST['capacidade']);
-         }else{$capacidade = '';}
-        if(isset($_POST['telefone'])){$telefone = anti_injection($_POST['telefone']);
-         }else{$telefone = '';}
-        if(isset($_POST['carteira'])){$carteira = anti_injection($_POST['carteira']);
-         }else{$carteira = '';}
-        if(isset($_POST['ano'])){$ano = anti_injection($_POST['ano']);
-         }else{$ano = '';}
-        if(isset($_POST['placa'])){$placa = anti_injection($_POST['placa']);
-         }else{$placa = '';}
-        if(isset($_POST['renavan'])){$renavan = anti_injection($_POST['renavan']);
-         }else{$renavan = '';}
-        if(isset($_POST['ipva'])){$ipva = anti_injection($_POST['ipva']);
-         }else{$ipva = '';}
-        if(isset($_POST['obs1'])){$obs1 = anti_injection($_POST['obs1']);
-         }else{$obs1 = '';}
-        if(isset($_POST['obs2'])){$obs2 = anti_injection($_POST['obs2']);
-         }else{$obs2 = '';}
-        if(isset($_POST['obs3'])){$obs3 = anti_injection($_POST['obs3']);
-         }else{$obs3 = '';}
-
-
         
         
         // Mensagem
@@ -414,31 +424,43 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="cpf">CRM:</label>
+                                            <label class="col-sm-2 control-label" for="cpf">CRM*:</label>
                                             <div                        class="col-sm-10">
-                                                                <input tabindex="2" type="text" value="" MAXLENGTH="200" id="crm" name="crm" class="form-control" /> 
+                                                                <input tabindex="2" type="text" value="" MAXLENGTH="200" id="crm" name="crm" class="form-control obrigatorio" /> 
                                                                             </div>
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="cpf">CPF:</label>
+                                            <label class="col-sm-2 control-label" for="cpf">CPF*:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="3" type="text" value="" MAXLENGTH="200" id="cpf" name="cpf" class="form-control masc_cpf" /> 
+                                                                <input tabindex="3" type="text" value="" MAXLENGTH="200" id="cpf" name="cpf" class="form-control masc_cpf obrigatorio" /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="rg">Identidade (RG):</label>
+                                            <label class="col-sm-2 control-label" for="rg">Identidade (RG)*:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="4" type="text" value="" MAXLENGTH="200" id="rg" name="rg" class="form-control masc_rg" /> 
+                                                                <input tabindex="4" type="text" value="" MAXLENGTH="200" id="rg" name="rg" class="form-control masc_rg obrigatorio" /> 
+                                                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="perfil_nascimento">Data de Nascimento:</label>
+                                            <div class="col-sm-10">
+                                                                <input tabindex="5" type="text" value="" MAXLENGTH="10" id="perfil_nascimento" name="perfil_nascimento" class="form-control masc_data" /> 
+                                                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="telefone2">Telefone Comercial:</label>
+                                            <div class="col-sm-10">
+                                                                <input tabindex="6" type="text" value="" MAXLENGTH="15" id="telefone2" name="telefone2" class="form-control masc_telefone" /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="cep" class="col-sm-2 control-label">Cep:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" validar="Control_Layoult_Valida_Cep" onblur="Sierra.Control_Layoult_Pesquisa_Cep('#cep')" class="form-control masc_cep" name="cep" id="cep" maxlength="200" value="" tabindex="5"> 
+                                                <input type="text" validar="Control_Layoult_Valida_Cep" onblur="Sierra.Control_Layoult_Pesquisa_Cep('#cep')" class="form-control masc_cep" name="cep" id="cep" maxlength="200" value="" tabindex="7"> 
                                             </div>
                                         </div>
 
@@ -446,7 +468,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                             <label class="col-sm-2 control-label" for="estado">Estado*</label>
                                             <div class="col-sm-10">
                                                 <!--Comeca Select-->
-                                                <select data-placeholder="Escolha um Estado" class="form-control form-select-padrao obrigatorio" onchange="Sierra.Modelo_Ajax_Chamar('<?php echo $endereco_admin; ?>/_Sistema/Recurso/Select_Recarrega_Extrangeira/U/estado/'+this.value,'','get',true)" id="estado" name="estado" tabindex="6" style="display: none;">    <option selected="" value="1">AC</option>
+                                                <select data-placeholder="Escolha um Estado" class="form-control form-select-padrao obrigatorio" onchange="Sierra.Modelo_Ajax_Chamar('<?php echo $endereco_admin; ?>/_Sistema/Recurso/Select_Recarrega_Extrangeira/U/estado/'+this.value,'','get',true)" id="estado" name="estado" tabindex="8" style="display: none;">    <option selected="" value="1">AC</option>
 
                                                     <option value="2">AL</option>
 
@@ -507,7 +529,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="cidade">Cidade*</label>
                                             <div class="col-sm-10">
-                                            <!--Comeca Select--><SELECT tabindex="7" name="cidade" id="cidade" onchange="Sierra.Modelo_Ajax_Chamar('<?php echo $endereco_admin; ?>/_Sistema/Recurso/Select_Recarrega_Extrangeira/U/cidade/'+this.value,'','get',true)" class="form-control form-select-padrao obrigatorio" data-placeholder="Escolha uma Cidade">
+                                            <!--Comeca Select--><SELECT tabindex="9" name="cidade" id="cidade" onchange="Sierra.Modelo_Ajax_Chamar('<?php echo $endereco_admin; ?>/_Sistema/Recurso/Select_Recarrega_Extrangeira/U/cidade/'+this.value,'','get',true)" class="form-control form-select-padrao obrigatorio" data-placeholder="Escolha uma Cidade">
 
                                             <OPTION VALUE="" selected></OPTION>
 
@@ -518,7 +540,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="bairro">Bairro*</label>
                                             <div class="col-sm-10">
-                                            <!--Comeca Select--><SELECT tabindex="8" name="bairro" id="bairro" class="form-control form-select-padrao obrigatorio" data-placeholder="Escolha um Bairro">
+                                            <!--Comeca Select--><SELECT tabindex="10" name="bairro" id="bairro" class="form-control form-select-padrao obrigatorio" data-placeholder="Escolha um Bairro">
 
                                             <OPTION VALUE="" selected></OPTION>
 
@@ -529,34 +551,34 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="endereco">Endereço:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="9" type="text" value="" MAXLENGTH="200" id="endereco" name="endereco" class="form-control"  /> 
+                                                                <input tabindex="11" type="text" value="" MAXLENGTH="200" id="endereco" name="endereco" class="form-control"  /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="numero">Número:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="10" type="text" value="" MAXLENGTH="15" id="numero" name="numero" class="form-control" onkeydown="Sierra.Visual_Formulario_Mascara(this,'Numero');"  /> 
+                                                                <input tabindex="12" type="text" value="" MAXLENGTH="15" id="numero" name="numero" class="form-control" onkeydown="Sierra.Visual_Formulario_Mascara(this,'Numero');"  /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="complemento">Complemento:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="11" type="text" value="" MAXLENGTH="15" id="complemento" name="complemento" class="form-control"  /> 
+                                                                <input tabindex="13" type="text" value="" MAXLENGTH="15" id="complemento" name="complemento" class="form-control"  /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="telefone" class="col-sm-2 control-label">Telefone*:</label>
                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control obrigatorio masc_fone" name="telefone" id="telefone" maxlength="30" value="" tabindex="12"> 
+                                                                <input type="text" class="form-control obrigatorio masc_fone" name="telefone" id="telefone" maxlength="30" value="" tabindex="14"> 
                                                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="celular">Celular:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="13" type="text" value="" MAXLENGTH="30" id="celular" name="celular" class="form-control masc_cel"  /> 
+                                                                <input tabindex="15" type="text" value="" MAXLENGTH="30" id="celular" name="celular" class="form-control masc_cel"  /> 
                                                                             </div>
                                         </div>
 
@@ -566,37 +588,53 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="email">Email 1*:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="14" type="text" value="" MAXLENGTH="200" id="email" name="email" class="form-control obrigatorio" validar="Control_Layoult_Valida_EMAIL"  /> 
+                                                                <input tabindex="16" type="text" value="" MAXLENGTH="200" id="email" name="email" class="form-control obrigatorio" validar="Control_Layoult_Valida_EMAIL"  /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="email2">Email 2:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="15" type="text" value="" MAXLENGTH="100" id="email2" name="email2" class="form-control" validar="Control_Layoult_Valida_EMAIL"  /> 
+                                                                <input tabindex="17" type="text" value="" MAXLENGTH="100" id="email2" name="email2" class="form-control" validar="Control_Layoult_Valida_EMAIL"  /> 
                                                                             </div>
                                         </div>
-
-
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="info_formatura_ano">Ano da Formatura:</label>
+                                            <div class="col-sm-10">
+                                                                <input tabindex="18" type="text" value="" MAXLENGTH="100" id="info_formatura_ano" name="info_formatura_ano" class="form-control"  /> 
+                                                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="info_especialidade">Especialidade:</label>
+                                            <div class="col-sm-10">
+                                                                <input tabindex="19" type="text" value="" MAXLENGTH="100" id="info_especialidade" name="info_especialidade" class="form-control"  /> 
+                                                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="info_hospital_trabalha">Hospital onde trabalha:</label>
+                                            <div class="col-sm-10">
+                                                                <input tabindex="20" type="text" value="" MAXLENGTH="100" id="info_hospital_trabalha" name="info_hospital_trabalha" class="form-control"  /> 
+                                                                            </div>
+                                        </div>
 
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="login">Login*:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="16" type="text" value="" MAXLENGTH="200" id="login" name="login" class="form-control obrigatorio"  /> 
+                                                                <input tabindex="21" type="text" value="" MAXLENGTH="200" id="login" name="login" class="form-control obrigatorio"  /> 
                                                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="senha">Senha*:</label>
                                             <div class="col-sm-10">
-                                                                        <input tabindex="17" type="password" value="" MAXLENGTH="200" id="senha" name="senha" class="form-control obrigatorio"  /> 
+                                                                        <input tabindex="22" type="password" value="" MAXLENGTH="200" id="senha" name="senha" class="form-control obrigatorio"  /> 
                                             </div>  
                                         </div>
                                         <div class="form-group">
                                             <label for="obs" class="col-sm-2 control-label">Observação</label>
                                             <div class="col-sm-10">
-                                                            <textarea style="height:200px; max-width:100%;" class="form-control" id="obs" name="obs" maxlength="10000" tabindex="18"></textarea>
+                                                            <textarea style="height:200px; max-width:100%;" class="form-control" id="obs" name="obs" maxlength="10000" tabindex="23"></textarea>
                                                             <!---->
                                             </div>
                                         </div>
@@ -625,7 +663,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
 
 
                                         <div class="form-actions">
-                                            <input type="submit" class="btn btn-success" value="Cadastrar" tabindex="19" />
+                                            <input type="submit" class="btn btn-success" value="Cadastrar" tabindex="24" />
                                         </div>
                                         
                                         
