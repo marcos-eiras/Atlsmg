@@ -326,7 +326,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
         $mailer = new \Framework\Classes\Email();
         $send	= $mailer->setTo('atlsmgbh@gmail.com', 'Contato ATLSMG')
-                    ->setSubject('Cadastro Efetuado com Sucesso '.SISTEMA_NOME)
+                    ->setSubject('Cadastro Efetuado com Sucesso - '.SISTEMA_NOME)
                     ->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)
                     ->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
                     ->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
