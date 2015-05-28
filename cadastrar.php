@@ -47,6 +47,10 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
        $rg = anti_injection($_POST['rg']);
        $mensagem .= '<br><b>Rg:</b>'.$rg;
     }else{$rg = '';}
+   if(isset($_POST['cpf'])){
+       $cpf = anti_injection($_POST['cpf']);
+       $mensagem .= '<br><b>Cpf:</b>'.$cpf;
+    }else{$cpf = '';}
    if(isset($_POST['orgao'])){
        $orgao = anti_injection($_POST['orgao']);
        $mensagem .= '<br><b>Orgão:</b>'.$orgao;
@@ -71,10 +75,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
        $cnpj_insc = anti_injection($_POST['cnpj_insc']);
        $mensagem .= '<br><b>Cnpj Inscrição:</b>'.$cnpj_insc;
     }else{$cnpj_insc = '';}
-   if(isset($_POST['perfil_nascimento'])){
-       $perfil_nascimento = anti_injection($_POST['perfil_nascimento']);
-       $mensagem .= '<br><b>Nascimento:</b>'.$perfil_nascimento;
-    }else{$perfil_nascimento = '';}
    if(isset($_POST['email'])){
        $email = anti_injection($_POST['email']);
        $mensagem .= '<br><b>Email:</b>'.$email;
@@ -94,12 +94,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
    if(isset($_POST['senha'])){
        $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']);
     }else{exit;}
-    if(isset($_POST['telefone2'])){
-        $telefone2 = anti_injection($_POST['telefone2']);
-       $mensagem .= '<br><b>Telefone2:</b>'.$telefone2;
-    }else{
-        $telefone2 = '';
-    }
     if(isset($_POST['pais'])){
         $pais = anti_injection($_POST['pais']);
        $mensagem .= '<br><b>Pais:</b>'.$pais;
@@ -277,10 +271,10 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $sucesso = $db->query('INSERT INTO usuario 
     (servidor,grupo,fisica,crm,nome,rg,orgao,razao_social,nome_contato,nomefantasia,cnpj,cnpj_insc,perfil_nascimento,email,telefone,celular,login,senha,
     
-    perfil_nascimento,telefone2,site,cep,pais,estado,cidade,bairro,endereco,numero,telefone2, log_date_add)
+    site,cep,pais,estado,cidade,bairro,endereco,numero,telefone2, log_date_add)
     VALUES (\'Fenix_Atls\',\''.$grupo.'\',\''.$fisica.'\',\''.$crm.'\',\''.$nome.'\',\''.$rg.'\',\''.$orgao.'\',\''.$razao_social.'\',\''.$nome_contato.'\',\''.$nomefantasia.'\',\''.$cnpj.'\',\''.$cnpj_insc.'\',\''.$perfil_nascimento.'\',\''.$email.'\',\''.$telefone.'\',\''.$celular.'\',\''.$login.'\',\''.$senha.'\','
                 . ''
-                . '\''.$perfil_nascimento.'\',\''.$telefone2.'\',\''.$site.'\',\''.$cep.'\',\''.$pais.'\',\''.$estado.'\',\''.$cidade.'\',\''.$bairro.'\',\''.$endereco.'\',\''.$numero.'\',\''.$telefone2.'\',\''.APP_HORA.'\')');
+                . '\''.$site.'\',\''.$cep.'\',\''.$pais.'\',\''.$estado.'\',\''.$cidade.'\',\''.$bairro.'\',\''.$endereco.'\',\''.$numero.'\',\''.$telefone2.'\',\''.APP_HORA.'\')');
         if($sucesso===false){
             
             $mensagens = array(
