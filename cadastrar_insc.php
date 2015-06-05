@@ -5,6 +5,7 @@ include('SiTec_Config.php');
 $grupo = 15;
 $grupo_nome = 'Médico';
 $mensagem = 'Cadastro de '.$grupo_nome.' efetuado com Sucesso.';
+$turmaid = (int) $_GET['turma'];
 
 if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     
@@ -293,11 +294,14 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $identificador = $db->query('SELECT id FROM usuario WHERE login=\''.$login.'\' LIMIT 1');
         while ($valor = $identificador->fetch_object()) {
             $identificador_id = $valor->id;
+            $usuarioid  = $identificador_id;
+            $usuarionome  = $nome;
+            $usuarioemail  = $email;
         }
         
         
         // Mensagem
-        // Redirecionar
+        /*// Redirecionar
         $Visual->Javascript_Executar(
                 'window.open("'.$endereco_admin.'","_TOP");'
         );
@@ -312,12 +316,96 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
             "mgs_principal"     => 'Sucesso',
             "mgs_secundaria"    => 'Cadastro de Médico com Sucesso'
         );
-        $Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $Visual->Json_IncluiTipo('Mensagens',$mensagens);*/
         
         // Redireciona
         
         //$params = Array('Url'=>$endereco_admin,'Tempo'=>10);
         //$Visual->Json_IncluiTipo('Redirect',$params);
+        
+        if($curso==='false') $curso = false;
+        $turma         = (int) $_GET['turma'];
+        
+        // Carrega Turma
+        $turma_registro = $db->Sql_Select('Curso_Turma','{sigla}id=\''.$turma.'\'',1);
+        if($turma_registro===false){
+            throw new \Exception('Essa Turma não existe:', 404);
+        }
+        
+        $curso_registro = $db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
+        if($curso_registro===false){
+            throw new \Exception('Esse Curso não existe', 404);
+        }
+        
+        
+        
+        // Inscricao Verifica se ja tem
+        $insc_registro = $db->Sql_Select('Curso_Turma_Inscricao','{sigla}usuario=\''.$usuarioid.'\' && {sigla}turma=\''.$turma_registro->id.'\'',1);
+        if($insc_registro!==false){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Erro'),
+                "mgs_secundaria"    => __('Você já está matriculado nessa turma! :(')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            exit;
+        }
+        
+        
+        
+        // Verifica Vagas
+        if($turma_registro->qnt<=0){
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Sem Vagas'),
+                "mgs_secundaria"    => __('Não possui mais vagas nessa Turma! :(')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            exit;
+        }
+        
+        
+        $curso_valor = \Framework\App\Sistema_Funcoes::Tranf_Real_Float($curso_registro->valor);
+        $sucesso = $db->query('INSERT INTO Curso_Turma_Inscricao 
+    (servidor,log_user_add,log_date_add, curso, turma, pago,valor,forma_pagar,condicao_pagar,usuario)
+    VALUES (\'Fenix_Atls\',\''.$usuarioid.'\',\''.APP_HORA.'\',\''.$turma_registro->curso.'\',\''.$turma_registro->id.'\',\'0\',\''.$curso_valor.'\',\'2\',\'1\',\''.$usuarioid.'\')');
+        
+        if($sucesso===true){
+            $motivo = 'Curso';
+            $identificador  = $db->Sql_Select('Curso_Turma_Inscricao', false,1,'id DESC');
+            $identificador  = $identificador->id;
+            
+            // Diminui Vagas da Turma e Salva
+            $turma_registro->qnt = $turma_registro->qnt-1;
+            $db->Sql_Update($turma_registro);
+
+            /*
+             * TRABALHA PARCELAS DO FINANCEIRO
+             */
+            // Passa tudo pra Contas a Receber
+            // Faz Insercao de Pgamento
+                    $sucesso = $db->query('INSERT INTO Pagamento_Mov_Int 
+    (servidor,log_user_add,log_date_add, motivo,motidoid,entrada_motivo, entrada_motivoid, saida_motivo,saida_motivoid,forma_pagar,forma_condicao,valor,pago)
+    VALUES (\'Fenix_Atls\',\''.$usuarioid.'\',\''.APP_HORA.'\',\'Curso\',\''.$identificador.'\',\'Usuario\',\''.$usuarioid.'\',\'Servidor\',\'Fenix_Atls\',\'2\',\'1\',\''.$curso_valor.'\',\'0\')');
+        
+            
+            // Envia Email pro Sistema
+            $texto =    'Nova Inscrição na Turma: '.$turma_registro->nome.'<br>'.
+                        'Id do Aluno: #'.$usuarioid.'<br>';
+                        'Nome do Aluno: '.$usuarionome.'<br>';
+                        'Email do Aluno: '.$usuarioemail.'<br>';
+            self::Enviar_Email($texto, $sucesso2);
+            // Envia Email pro Usuario
+            $texto =    'Nova Inscrição na Turma '.$turma_registro->nome.' confirmada com sucesso.<br>'.
+                        'Valor da Inscrição: '.$curso_registro->valor.'<br>'.
+                        '<a target="_BLANK" href="'.SISTEMA_URL.SISTEMA_DIR.'Financeiro/Usuario/Pagar">Clique para Acessar a área de pagamento.</a><br>';
+            self::Enviar_Email($texto, $sucesso2,$usuarioemail,$usuarionome);
+        }
+        
         
         // Envia EMAIL
         require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
@@ -333,6 +421,26 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         //var_dump($send,$mailer);
         
         $Visual->Json_Info_Update('Historico', false);
+        
+        $class_inserir = '.container-fluid';
+        $html = '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+        <input type="hidden" name="code" value="C4C306DAE9E9F3D7747E3FB32285EA9C" />
+        <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';
+        $conteudo = array(
+            'location'  =>  '.container-fluid',
+            'js'        =>  ''.
+                            $js_Extra,
+            'html'      =>  $html
+        );
+        $Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        
+        
+        
         echo $Visual->Json_Retorna();
         
         
@@ -410,7 +518,15 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                         <div class="widget png">
                             <div class="widget-body">
                                 <div class="container-fluid">
-                                    <form id="form_Sistema_Admin_Usuarios" class="formajax form-horizontal" action="cadastrar.php?acao=adicionar" method="post" enctype="multipart/form-data" autocomplete="off">
+                                    Ao Continuar Você Concorda com os temos abaixo:<br><br>Regras sobe Cancelamento e Transferência de Curso:
+            <br><br>
+
+
+    Cancelamento de inscrição em até 60 (sessenta) dias de antecedência ao curso: o aluno poderá transferir a sua inscrição para outra data disponível, somente.<br>
+    Cancelamento de inscrição entre 60(sessenta) e 30(trinta) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 25% (vinte e cinco) de multa.<br>
+    Cancelamento de inscrição entre 30(trinta) e 15(quinze) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 50% (vinte e cinco) de multa.<br>
+    Cancelamento de inscrição em até 15 dias de antecedência ao curso: o aluno perderá o direito à inscrição, sem ressarcimento.
+                                    <form id="form_Sistema_Admin_Usuarios" class="formajax form-horizontal" action="cadastrar_insc.php?acao=adicionar&turma=<?php echo $turmaid; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
   
                                 
                                         <div class="form-group">
@@ -745,8 +861,9 @@ jQuery (function(){
 		tabContainers.filter(this.hash).show();
 		jQuery('div.tabs ul.tabNavigation a').removeClass('selected');
 		jQuery(this).addClass('selected');
-		return false;
+		exit;
 		}).filter(':first').click();
 	});
 </script>
 </body></html>
+:  Non-static method Framework\App\Controle::Export_Todos() should not be called statically in 
