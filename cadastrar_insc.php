@@ -4,13 +4,15 @@ include('SiTec_Config.php');
 
 $grupo = 15;
 $grupo_nome = 'Médico';
-$mensagem = 'Cadastro de '.$grupo_nome.' efetuado com Sucesso.';
 $turmaid = (int) $_GET['turma'];
+// Carrega Turma
+$turma_registro = $db->Sql_Select('Curso_Turma','{sigla}id=\''.$turmaid.'\'',1);
+if($turma_registro===false){
+    throw new \Exception('Essa Turma não existe:', 404);
+}
+$mensagem = 'Inscrição de Médico na Turma '.$turma_registro->nome.'.';
 
 if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
-    
-    $db = new \Framework\App\Conexao();
-    
     if(SISTEMA_DEBUG===false)
         $recarrega_securimage = 'document.getElementById(\'captcha_image\').src = \''.$endereco_admin_parcial.'Classes/Securimage/securimage_show.php?\' + Math.random();';
     
@@ -88,13 +90,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
        $celular = anti_injection($_POST['celular']);
        $mensagem .= '<br><b>Celular:</b>'.$celular;
     }else{$celular = '';}
-   if(isset($_POST['login'])){
-       $login = anti_injection($_POST['login']);
-       $mensagem .= '<br><b>Login:</b>'.$login;
-    }else{exit;}
-   if(isset($_POST['senha'])){
-       $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha']);
-    }else{exit;}
     if(isset($_POST['pais'])){
         $pais = anti_injection($_POST['pais']);
        $mensagem .= '<br><b>Pais:</b>'.$pais;
@@ -186,7 +181,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     $login = $email;
     $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($email);
 
-
     //Verifica Grupos
     if ($email=='' || $rg=='' || $crm=='' || $cpf=='') {
         $mensagens = array(
@@ -213,25 +207,6 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         }
     }
     
-    // Procura LOGIN
-    $procurar = $db->query('SELECT login FROM usuario WHERE login=\''.$login.'\'');
-    $contador = 0;
-    while ($procurar->fetch_object()) {
-        ++$contador;
-    }
-    if($contador!==0){
-        $mensagens = array(
-            "tipo"              => 'erro',
-            "mgs_principal"     => 'Login já Existe',
-            "mgs_secundaria"    => 'Por favor Escolha um Outro'
-        );
-        $Visual->Json_IncluiTipo('Mensagens',$mensagens);
-        $Visual->Javascript_Executar(
-                '$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();'
-        );
-        ++$erros;
-    }
-    
     // Procura Email
     $procurar = $db->query('SELECT email FROM usuario WHERE email=\''.$email.'\'');
     $contador = 0;
@@ -250,6 +225,25 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         );
         ++$erros;
     }
+    
+    // Procura LOGIN
+    /*$procurar = $db->query('SELECT login FROM usuario WHERE login=\''.$login.'\'');
+    $contador = 0;
+    while ($procurar->fetch_object()) {
+        ++$contador;
+    }
+    if($contador!==0){
+        $mensagens = array(
+            "tipo"              => 'erro',
+            "mgs_principal"     => 'Login já Existe',
+            "mgs_secundaria"    => 'Por favor Escolha um Outro'
+        );
+        $Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $Visual->Javascript_Executar(
+                '$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();'
+        );
+        ++$erros;
+    }*/
     
     // Verifica Erros ou Insere
     if($erros>0){
@@ -323,17 +317,20 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         //$params = Array('Url'=>$endereco_admin,'Tempo'=>10);
         //$Visual->Json_IncluiTipo('Redirect',$params);
         
-        if($curso==='false') $curso = false;
         $turma         = (int) $_GET['turma'];
         
         // Carrega Turma
         $turma_registro = $db->Sql_Select('Curso_Turma','{sigla}id=\''.$turma.'\'',1);
         if($turma_registro===false){
+            $Visual->Json_Info_Update('Historico', false);
+            echo $Visual->Json_Retorna();
             throw new \Exception('Essa Turma não existe:', 404);
         }
         
         $curso_registro = $db->Sql_Select('Curso','{sigla}id=\''.$turma_registro->curso.'\'',1);
         if($curso_registro===false){
+            $Visual->Json_Info_Update('Historico', false);
+            echo $Visual->Json_Retorna();
             throw new \Exception('Esse Curso não existe', 404);
         }
         
@@ -347,8 +344,8 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Você já está matriculado nessa turma! :(')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $Visual->Json_Info_Update('Historico', false);
             $this->layoult_zerar = false; 
             exit;
         }
@@ -362,9 +359,10 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                 "mgs_principal"     => __('Sem Vagas'),
                 "mgs_secundaria"    => __('Não possui mais vagas nessa Turma! :(')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
-            $this->_Visual->Json_Info_Update('Historico', false);
+            $Visual->Json_IncluiTipo('Mensagens',$mensagens);
             $this->layoult_zerar = false; 
+            $Visual->Json_Info_Update('Historico', false);
+            echo $Visual->Json_Retorna();
             exit;
         }
         
@@ -389,7 +387,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
             // Passa tudo pra Contas a Receber
             // Faz Insercao de Pgamento
                     $sucesso = $db->query('INSERT INTO Pagamento_Mov_Int 
-    (servidor,log_user_add,log_date_add, motivo,motidoid,entrada_motivo, entrada_motivoid, saida_motivo,saida_motivoid,forma_pagar,forma_condicao,valor,pago)
+    (servidor,log_user_add,log_date_add, motivo,motivoid,entrada_motivo, entrada_motivoid, saida_motivo,saida_motivoid,forma_pagar,forma_condicao,valor,pago)
     VALUES (\'Fenix_Atls\',\''.$usuarioid.'\',\''.APP_HORA.'\',\'Curso\',\''.$identificador.'\',\'Usuario\',\''.$usuarioid.'\',\'Servidor\',\'Fenix_Atls\',\'2\',\'1\',\''.$curso_valor.'\',\'0\')');
         
             
@@ -398,12 +396,12 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                         'Id do Aluno: #'.$usuarioid.'<br>';
                         'Nome do Aluno: '.$usuarionome.'<br>';
                         'Email do Aluno: '.$usuarioemail.'<br>';
-            self::Enviar_Email($texto, $sucesso2);
+            \Framework\App\Controle::Enviar_Email($texto, 'Inscrição Feita com Sucesso');
             // Envia Email pro Usuario
             $texto =    'Nova Inscrição na Turma '.$turma_registro->nome.' confirmada com sucesso.<br>'.
                         'Valor da Inscrição: '.$curso_registro->valor.'<br>'.
                         '<a target="_BLANK" href="'.SISTEMA_URL.SISTEMA_DIR.'Financeiro/Usuario/Pagar">Clique para Acessar a área de pagamento.</a><br>';
-            self::Enviar_Email($texto, $sucesso2,$usuarioemail,$usuarionome);
+            \Framework\App\Controle::Enviar_Email($texto, 'Inscrição Feita com Sucesso',$usuarioemail,$usuarionome);
         }
         
         
@@ -423,7 +421,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $Visual->Json_Info_Update('Historico', false);
         
         $class_inserir = '.container-fluid';
-        $html = '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        $html = '<b>Inscrição Confirmada com Sucesso</b><br><b>Para Continuar faça o Pagamento através do link abaixo</b><br><br><!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
         <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
         <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
         <input type="hidden" name="code" value="C4C306DAE9E9F3D7747E3FB32285EA9C" />
@@ -433,19 +431,15 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';
         $conteudo = array(
             'location'  =>  '.container-fluid',
-            'js'        =>  ''.
-                            $js_Extra,
+            'js'        =>  '',
             'html'      =>  $html
         );
         $Visual->Json_IncluiTipo('Conteudo',$conteudo);
         
         
         
+        $Visual->Json_Info_Update('Historico', false);
         echo $Visual->Json_Retorna();
-        
-        
-        
-        
         
         exit;
     }
@@ -833,7 +827,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     <script type="text/javascript">console.time('Sistema');</script>  
     
     
-      <div class="push"></div><!-- .push --><div id="escondido"></div><div class="growlUI" style="display:none;"><h1>SierraTecnologia</h1> <h2>Ricardo Sierra sierra.csi@gmail.com</h2></div><div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div><div class="modal-body"></div><div class="modal-footer"></div></div><script type="text/javascript" src="<?php echo $endereco_admin; ?>/web/min/?f=lang/ptBR/Linguagem.js,sistema/modernizr/modernizr.js,sistema/jquery/jquery.min.js,sistema/jquery.browser.js,sistema/historico/jquery.history.js,sistema/nprogress/nprogress.js,sistema/toastr/toastr.min.js,js/jquery/jquery.blockUI.js,js/jquery/jquery.tabify.js,assets/bootstrap-mask/jquery.maskedinput-1.3.min.js,sistema/bootstrap/js/bootstrap.js,sistema/bootstrap/js/bootstrap-fileupload.js,sistema/data-tables/jquery.dataTables.js,sistema/chosen/chosen.jquery.js,sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox.js,sistema/sistema.js"></script><script type="text/javascript" language="javascript">$(document).ready(function() {if(window.location.hash!='') location.href='<?php echo $endereco_admin; ?>/'+window.location.hash.replace(/#/g, '');ConfigArquivoPadrao = '<?php echo $endereco_admin; ?>/';Config_Form_Maiusculo = false;UserLogado = 2;Configuracoes_Template = new Array();Configuracoes_Template["datatable_sdom"]="<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>";Configuracoes_Template["datatable_sPaginationType"]="bootstrap";Configuracoes_Template["datatable_bJQueryUI"]="";Configuracoes_Template["datatable_bAutoWidth"]="1";});</script>
+      <div class="push"></div><!-- .push --><div id="escondido"></div><div class="growlUI" style="display:none;"><h1>SierraTecnologia</h1> <h2>Ricardo Sierra sierra.csi@gmail.com</h2></div><div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div><div class="modal-body"></div><div class="modal-footer"></div></div><script type="text/javascript" src="<?php echo $endereco_admin; ?>/web/min/?f=../i18n/pt_BR/Linguagem.js,sistema/modernizr/modernizr.js,sistema/jquery/jquery.min.js,sistema/jquery.browser.js,sistema/historico/jquery.history.js,sistema/nprogress/nprogress.js,sistema/toastr/toastr.min.js,js/jquery/jquery.blockUI.js,js/jquery/jquery.tabify.js,assets/bootstrap-mask/jquery.maskedinput-1.3.min.js,sistema/bootstrap/js/bootstrap.js,sistema/bootstrap/js/bootstrap-fileupload.js,sistema/data-tables/jquery.dataTables.js,sistema/chosen/chosen.jquery.js,sistema/bootstrap-duallistbox/jquery.bootstrap-duallistbox.js,sistema/sistema.js"></script><script type="text/javascript" language="javascript">$(document).ready(function() {if(window.location.hash!='') location.href='<?php echo $endereco_admin; ?>/'+window.location.hash.replace(/#/g, '');ConfigArquivoPadrao = '<?php echo $endereco_admin; ?>/';Config_Form_Maiusculo = false;UserLogado = 2;Configuracoes_Template = new Array();Configuracoes_Template["datatable_sdom"]="<'row'<'col-6'l><'col-6'f>r>t<'row'<'col-6'i><'col-6'p>>";Configuracoes_Template["datatable_sPaginationType"]="bootstrap";Configuracoes_Template["datatable_bJQueryUI"]="";Configuracoes_Template["datatable_bAutoWidth"]="1";});</script>
       
     
 <!-- RICARDO REBELLO SIERRA <web@ricardosierra.com.br>  -->    <?php /*<script src="<?php echo $endereco_admin; ?>/layoult/metrolab/js/extra.js"></script>
