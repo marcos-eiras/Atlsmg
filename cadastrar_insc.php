@@ -267,10 +267,10 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         // Cadastrar
         
         $sucesso = $db->query('INSERT INTO usuario 
-    (servidor,grupo,fisica,crm,nome,rg,orgao,razao_social,nome_contato,nomefantasia,cnpj,cnpj_insc,perfil_nascimento,email,telefone,celular,login,senha,
+    (servidor,grupo,fisica,cpf,crm,nome,rg,orgao,razao_social,nome_contato,nomefantasia,cnpj,cnpj_insc,perfil_nascimento,email,telefone,celular,login,senha,
     
     site,cep,pais,estado,cidade,bairro,endereco,numero,telefone2, log_date_add)
-    VALUES (\'Fenix_Atls\',\''.$grupo.'\',\''.$fisica.'\',\''.$crm.'\',\''.$nome.'\',\''.$rg.'\',\''.$orgao.'\',\''.$razao_social.'\',\''.$nome_contato.'\',\''.$nomefantasia.'\',\''.$cnpj.'\',\''.$cnpj_insc.'\',\''.$perfil_nascimento.'\',\''.$email.'\',\''.$telefone.'\',\''.$celular.'\',\''.$login.'\',\''.$senha.'\','
+    VALUES (\'Fenix_Atls\',\''.$grupo.'\',\''.$fisica.'\',\''.$cpf.'\',\''.$crm.'\',\''.$nome.'\',\''.$rg.'\',\''.$orgao.'\',\''.$razao_social.'\',\''.$nome_contato.'\',\''.$nomefantasia.'\',\''.$cnpj.'\',\''.$cnpj_insc.'\',\''.$perfil_nascimento.'\',\''.$email.'\',\''.$telefone.'\',\''.$celular.'\',\''.$login.'\',\''.$senha.'\','
                 . ''
                 . '\''.$site.'\',\''.$cep.'\',\''.$pais.'\',\''.$estado.'\',\''.$cidade.'\',\''.$bairro.'\',\''.$endereco.'\',\''.$numero.'\',\''.$telefone2.'\',\''.APP_HORA.'\')');
         if($sucesso===false){
@@ -560,7 +560,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="telefone2">Telefone Comercial:</label>
                                             <div class="col-sm-10">
-                                                                <input tabindex="6" type="text" value="" MAXLENGTH="15" id="telefone2" name="telefone2" class="form-control masc_telefone" /> 
+                                                                <input tabindex="6" type="text" value="" MAXLENGTH="15" id="telefone2" name="telefone2" class="form-control masc_fone" /> 
                                                                             </div>
                                         </div>
 
