@@ -421,10 +421,11 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $Visual->Json_Info_Update('Historico', false);
         
         $class_inserir = '.container-fluid';
-        $html = '<b>Inscrição Confirmada com Sucesso</b><br><b>Para Continuar faça o Pagamento através do link abaixo</b><br><br><!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        $html = '<b>Sua inscrição será confirmada após pagamento</b><br><b>Faça o Pagamento através do link abaixo</b><br><br>
+        <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
         <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
         <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-        <input type="hidden" name="code" value="C4C306DAE9E9F3D7747E3FB32285EA9C" />
+        <input type="hidden" name="code" value="D72BB8B32626B44224509F85489BBB89" />
         <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
         </form>
         <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
@@ -500,7 +501,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                         <!-- END THEME CUSTOMIZER-->
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                         <h3 class="page-title">
-                          <span id="Framework_Titulo">Cadastro<?php if($grupo!==0) echo ' de '.$grupo_nome; ?></span>
+                          <span id="Framework_Titulo">Inscrição<?php if($grupo!==0) echo ' de '.$grupo_nome; ?></span>
                         </h3>
                                           <!-- END PAGE TITLE & BREADCRUMB-->
                    </div>
@@ -774,7 +775,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
 
 
                                         <div class="form-actions">
-                                            <input type="submit" class="btn btn-success" value="Cadastrar" tabindex="24" />
+                                            <input type="submit" class="btn btn-success" value="Inscrever-se" tabindex="24" />
                                         </div>
                                         
                                         
