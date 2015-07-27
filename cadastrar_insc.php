@@ -18,7 +18,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     
     // Adiciona ou Retorna Erros
     $Visual = new Visual();
-    $erros = 0;
+    $erros  = 0;
     /*//
     $mensagens = array(
         "tipo"              => 'erro',
@@ -168,8 +168,8 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $mensagem .= '<br><b>Especialidade:</b>'.$info_especialidade;
     }else{
         $info_especialidade = '';
-        
     }
+    
     if(isset($_POST['info_hospital_trabalha'])){
         $info_hospital_trabalha = anti_injection($_POST['info_hospital_trabalha']);
         $mensagem .= '<br><b>Hospital onde Trabalha:</b>'.$info_hospital_trabalha;
@@ -181,6 +181,17 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
     $login = $email;
     $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($email);
 
+    //Verifica se Foi Aceita
+    if (!isset($_POST['Concordo']) || $_POST['Concordo']!=='Sim') {
+        $mensagens = array(
+            "tipo"              => 'erro',
+            "mgs_principal"     => 'Termo não Aceitado',
+            "mgs_secundaria"    => 'Por Favor leia e aceite nossos termos'
+        );
+        $Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        ++$erros;
+    }  
+    
     //Verifica Grupos
     if ($email=='' || $rg=='' || $crm=='' || $cpf=='') {
         $mensagens = array(
@@ -421,7 +432,7 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         $Visual->Json_Info_Update('Historico', false);
         
         $class_inserir = '.container-fluid';
-        $html = '<b>Sua inscrição será confirmada após pagamento</b><br><b>Faça o Pagamento através do link abaixo</b><br><br>
+        /*$html = '<b>Sua inscrição será confirmada após pagamento</b><br><b>Faça o Pagamento através do link abaixo</b><br><br>
         <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
         <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
         <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
@@ -429,7 +440,8 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
         <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
         </form>
         <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->';*/
+        $html = '<b>Sua inscrição será confirmada após o pagamento</b><br><b>Para isso se comunique com a Atlsmg pelo telefone 31-3142-5522</b>';
         $conteudo = array(
             'location'  =>  '.container-fluid',
             'js'        =>  '',
@@ -513,16 +525,18 @@ if(isset($_GET['acao']) && $_GET['acao']==='adicionar'){
                         <div class="widget png">
                             <div class="widget-body">
                                 <div class="container-fluid">
-                                    Ao Continuar Você Concorda com os temos abaixo:<br><br>Regras sobe Cancelamento e Transferência de Curso:
-            <br><br>
-
-
-    Cancelamento de inscrição em até 60 (sessenta) dias de antecedência ao curso: o aluno poderá transferir a sua inscrição para outra data disponível, somente.<br>
-    Cancelamento de inscrição entre 60(sessenta) e 30(trinta) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 25% (vinte e cinco) de multa.<br>
-    Cancelamento de inscrição entre 30(trinta) e 15(quinze) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 50% (vinte e cinco) de multa.<br>
-    Cancelamento de inscrição em até 15 dias de antecedência ao curso: o aluno perderá o direito à inscrição, sem ressarcimento.
                                     <form id="form_Sistema_Admin_Usuarios" class="formajax form-horizontal" action="cadastrar_insc.php?acao=adicionar&turma=<?php echo $turmaid; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
-  
+                                        Ao Continuar Você Concorda com os temos abaixo:<br><br>Regras sobe Cancelamento e Transferência de Curso:
+                                        <br><br>
+
+
+                                        Cancelamento de inscrição em até 60 (sessenta) dias de antecedência ao curso: o aluno poderá transferir a sua inscrição para outra data disponível, somente.<br>
+                                        Cancelamento de inscrição entre 60(sessenta) e 30(trinta) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 25% (vinte e cinco) de multa.<br>
+                                        Cancelamento de inscrição entre 30(trinta) e 15(quinze) dias de antecedência ao curso: o aluno poderá transferir sua inscrição para outra data disponível ou cancelar participação com 50% (vinte e cinco) de multa.<br>
+                                        Cancelamento de inscrição em até 15 dias de antecedência ao curso: o aluno perderá o direito à inscrição, sem ressarcimento.
+
+                                        <br>
+                                        <input type="checkbox" class="check obrigatorio" name="Concordo" id="checkbutton" value="Sim" /> Declaro que Concordo com os Termos Acima<br><br>
                                 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="nome">Nome Completo*:</label>

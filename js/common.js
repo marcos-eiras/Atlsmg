@@ -184,7 +184,7 @@ var SierraTecnologia = (function () {
         for(i=0; i < data.length; i++){
             html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\"><a href=\"index.php?pg=turma&id="+data[i].id+"/\">"+data[i].nome+"</a></span><br>"+data[i].descricao+"</p><br><p><span style=\"color:#08c;\">Requisitos:</span> "+data[i].requisito+"<br><span style=\"color:#08c;\">Valor:</span> "+Converter_Float_Real(data[i].valor)+
                     
-                    "<br><a href=\"index.php?pg=turma&id="+data[i].id+"/\">Veja lista completa de turmas e data</a></p></div>";
+                    "<br><a class=\"home_cursos\" href=\"index.php?pg=turma&id="+data[i].id+"/\">Veja lista completa de turmas e data</a></p></div>";
         }
         
         return html;
@@ -208,7 +208,7 @@ var SierraTecnologia = (function () {
             if(data[i].qnt>0){
                 html = html+"<div class=\"block-01\"><p><span style=\"color:#08c; font-size:22px;\">"+data[i].nome+"</span>\n\
                 <br></p><p><span style=\"color:#08c;\">Início:</span> "+data[i].inicio+"<br>\n\
-                <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><span style=\"color:#08c;\">Vagas:</span> "+data[i].qnt+"<br/><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
+                <span style=\"color:#08c;\">Fim:</span> "+data[i].fim+"<br/><!--<span style=\"color:#08c;\">Vagas:</span> "+data[i].qnt+"<br/>--><span style=\"color:#08c;\">Carga Horária:</span> "+data[i].carga+" horas<br>\n\
                 <span style=\"color:#08c;\">Horário:</span> "+data[i].descricao+"<br/><a href=\"cadastrar_insc.php?turma="+data[i].id+"\"><img border=\"0\" src=\"img/inscreva1.jpg\" /></a></p></div>";    
                 //"+ window.url_sistema+"/Curso/Turma/Inscricao_Fazer/"+data[i].id+"/
             }
